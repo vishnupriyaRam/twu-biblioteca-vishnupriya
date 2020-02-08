@@ -7,16 +7,16 @@ import static org.junit.jupiter.api.Assertions.*;
 class BookTest {
     @Test
     void shouldTestIfTwoBooksAreSame() {
-        Book book1 = new Book("Harry Potter");
-        Book book2 = new Book("Harry Potter");
+        Book book1 = new Book("Harry Potter", "Rowling JK", "2001");
+        Book book2 = new Book("Harry Potter", "Rowling JK", "2001");
 
         assertEquals(book1, book2);
     }
 
     @Test
     void shouldReturnTheTitleOfTheBook() {
-        Book book = new Book("Harry Potter");
-        String expected = "Harry Potter";
+        Book book = new Book("Harry Potter", "Rowling JK", "2001");
+        String expected = "Harry Potter | Rowling JK | 2001";
         assertEquals(expected, book.toString());
     }
 }

@@ -13,9 +13,9 @@ class LibraryTest {
     void shouldReturnTheListOfBooksAvailable() {
         Library library = new Library();
         List<Book> books = asList(
-                new Book("A"),
-                new Book("B"),
-                new Book("C"));
+                new Book("Harry Potter", "Rowling JK", "2001"),
+                new Book("The Fault in our stars", "Green John", "2012"),
+                new Book("A song of ice and fire", "Martin RR George", "1996"));
 
         assertEquals(books, library.getBooksAvailable());
     }
