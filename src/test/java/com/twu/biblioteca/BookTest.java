@@ -41,4 +41,12 @@ class BookTest {
 
         assertEquals(book1, book2);
     }
+
+    @Test
+    void shouldTestIfTheBookIsSameAsAnotherBookWithSameTitle() {
+        Book book1 = new Book("Harry Potter", "Rowling JK", "2001");
+        Book book2 = new Book("Harry Potter");
+
+        assertEquals(book1, book2);
+    }
 }
