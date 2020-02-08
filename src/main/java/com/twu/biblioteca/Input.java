@@ -13,6 +13,9 @@ public class Input {
 
         if (userOption == 1) {
             library.view();
+        } else if (userOption == 2) {
+            System.out.println("Thanks for using the application");
+            return;
         } else {
             System.out.println("Please select a valid option!");
         }

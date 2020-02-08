@@ -34,7 +34,7 @@ class InputTest {
 
     @Test
     void shouldTestIfTheUserIsAbleToChooseAMenuOption() {
-        String data = "1\n2";
+        String data = "1";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         Input input = new Input();
         String expected = "1. List available Books \n" + "\n" +
@@ -50,10 +50,23 @@ class InputTest {
 
     @Test
     void shouldTestIfTheUserCannotChooseAnInvalidOption() {
-        String data = "6\n2";
+        String data = "6";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         Input input = new Input();
         String expected = "Please select a valid option!";
+
+        input.getInput();
+
+        assertEquals(expected, outContent.toString().replace("1. List available Books \n"
+                + "\n" + "Choose an option:", "").trim());
+    }
+
+    @Test
+    void shouldTestIfTheUserIsAbleToQuitTheApplication() {
+        String data = "2";
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+        Input input = new Input();
+        String expected = "Thanks for using the application";
 
         input.getInput();
 
