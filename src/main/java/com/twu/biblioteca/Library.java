@@ -44,7 +44,9 @@ public class Library {
 
     public void returnBook(String title) {
         Book book = getBook(title);
-        if (checkedOut.contains(book))
+        if (checkedOut.contains(book)) {
             checkedOut.remove(book);
+            System.out.println("\nThank you for returning the book\n");
+        }
     }
 }

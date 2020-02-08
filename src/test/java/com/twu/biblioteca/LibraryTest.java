@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -77,7 +78,8 @@ class LibraryTest {
     void shouldTestIfTheCustomerIsAbleToReturnTheBook() {
         Library library = new Library();
 
-        String expected = "Thank you! Enjoy the book\n" + "\n" +
+        String expected = "Thank you! Enjoy the book\n" + "\n" + "\n" +
+                "Thank you for returning the book\n" + "\n" +
                 "Harry Potter | Rowling JK | 2001\n" +
                 "The Fault in our stars | Green John | 2012\n" +
                 "A song of ice and fire | Martin RR George | 1996";
@@ -87,6 +89,16 @@ class LibraryTest {
         library.view();
 
         assertEquals(expected, outContent.toString().trim());
+    }
 
+    @Test
+    void shouldTestIfTheUserIsNotifiedOnSuccessfulReturn() {
+        Library library = new Library();
+        String expected = "Thank you! Enjoy the book\n" + "\n" + "\n" + "Thank you for returning the book";
+
+        library.checkOut("Harry Potter");
+        library.returnBook("Harry Potter");
+
+        assertEquals(expected, outContent.toString().trim());
     }
 }
