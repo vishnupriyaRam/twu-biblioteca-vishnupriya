@@ -18,5 +18,4 @@ public class BibliotecaApp {
         String welcomeMessage = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!\n";
         System.out.println(welcomeMessage);
     }
-
 }

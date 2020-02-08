@@ -41,4 +41,10 @@ public class Library {
         }
         return null;
     }
+
+    public void returnBook(String title) {
+        Book book = getBook(title);
+        if (checkedOut.contains(book))
+            checkedOut.remove(book);
+    }
 }
