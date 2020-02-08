@@ -8,6 +8,6 @@ public class BibliotecaApp {
 
         System.out.println("\nList of Books Available currently \n");
         Library library = new Library();
-        System.out.println(library.getBooksAvailable());
+        library.view();
     }
 }

@@ -1,7 +1,6 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Library {
@@ -11,11 +10,8 @@ public class Library {
         addBooks();
     }
 
-    public String getBooksAvailable() {
-        return Arrays.toString(booksAvailable.toArray())
-                .replace("[", "")
-                .replace(", ", "")
-                .replace("]", "");
+    public void view() {
+        this.booksAvailable.forEach(Book::viewBookInfo);
     }
 
     private void addBooks() {

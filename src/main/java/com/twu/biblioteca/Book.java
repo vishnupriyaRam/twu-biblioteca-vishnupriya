@@ -14,9 +14,8 @@ public class Book {
         this.year = year;
     }
 
-    @Override
-    public String toString() {
-        return title + " | " +  author + " | " + year + "\n";
+    public void viewBookInfo(){
+        System.out.println(title + " | " +  author + " | " + year);
     }
 
     @Override
@@ -24,11 +23,13 @@ public class Book {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return Objects.equals(title, book.title);
+        return title.equals(book.title) &&
+                author.equals(book.author) &&
+                year.equals(book.year);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title);
+        return Objects.hash(title, author, year);
     }
 }
