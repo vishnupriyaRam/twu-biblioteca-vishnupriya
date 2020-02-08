@@ -28,7 +28,9 @@ class MenuTest {
     @Test
     void shouldReturnTheListOfMenuItems() {
         Menu menu = new Menu();
-        String expected = "1. List available Books";
+        String expected = "1. List available Books \n" +
+                "\n" +
+                "2. Quit";
 
         menu.viewMenu();
 
