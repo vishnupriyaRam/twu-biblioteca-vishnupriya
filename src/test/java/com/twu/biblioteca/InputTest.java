@@ -37,8 +37,10 @@ class InputTest {
         String data = "1";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         Input input = new Input();
-        String expected = "1. List available Books \n" + "\n" +
-                "Choose an option: \n" +
+        String expected = "1. List available Books\n" +
+                "2. Checkout a book\n" +
+                "3. Quit\n" +
+                "Choose an option: \n" + "\n" + "\n" +
                 "Harry Potter | Rowling JK | 2001\n" +
                 "The Fault in our stars | Green John | 2012\n" +
                 "A song of ice and fire | Martin RR George | 1996";
@@ -57,43 +59,56 @@ class InputTest {
 
         input.getInput();
 
-        assertEquals(expected, outContent.toString().replace("1. List available Books \n" +
-                "\n" +
-                "2. Quit\n" +
-                "\n" +
+        assertEquals(expected, outContent.toString().replace("1. List available Books\n" +
+                "2. Checkout a book\n" +
+                "3. Quit\n" +
                 "Choose an option: ", "").trim());
     }
 
     @Test
     void shouldTestIfTheUserIsAbleToQuitTheApplication() {
-        String data = "2";
+        String data = "3";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         Input input = new Input();
-        String expected = "Thanks for using the application";
+        String expected = "";
 
         input.getInput();
 
-        assertEquals(expected, outContent.toString().replace("1. List available Books \n"
-                + "\n" + "Choose an option:", "").trim());
+        assertEquals(expected, outContent.toString().replace("1. List available Books\n" +
+                "2. Checkout a book\n" +
+                "3. Quit\n" +
+                "Choose an option: " + "Please select a valid option!", "").trim());
     }
 
     @Test
     void shouldTestIfTheUserIsAbleToContinueUsingTheAppUntilQuitIsChosen() {
-        String data = "1\n2";
+        String data = "1\n3";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         Input input = new Input();
-        String expected = "1. List available Books \n" +
-                "\n" +
-                "2. Quit\n" +
-                "\n" +
-                "Choose an option: \n" +
-                "\n" +
-                "List of Books Available currently \n" +
-                "\n" +
+        String expected = "1. List available Books\n" +
+                "2. Checkout a book\n" +
+                "3. Quit\n" +
+                "Choose an option: \n" + "\n" + "\n" +
                 "Harry Potter | Rowling JK | 2001\n" +
                 "The Fault in our stars | Green John | 2012\n" +
                 "A song of ice and fire | Martin RR George | 1996";
 
+        input.getInput();
+
+        assertEquals(expected, outContent.toString().trim());
+    }
+
+    @Test
+    void shouldTestIfTheUserIsAbleToCheckoutTheBook() {
+        String data = "2\nHarry Potter\n1";
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+        Input input = new Input();
+
+        String expected = "1. List available Books\n" +
+                "2. Checkout a book\n" +
+                "3. Quit\n" +
+                "Choose an option: \n" +
+                "Enter book to checkout:";
         input.getInput();
 
         assertEquals(expected, outContent.toString().trim());

@@ -13,10 +13,15 @@ public class Input {
 
         switch (userOption) {
             case 1:
-                System.out.println("\nList of Books Available currently \n");
+                System.out.println("\n");
                 library.view();
+                System.out.println("\n");
                 break;
             case 2:
+                String userInput = getBook(in, "Enter book to checkout: ");
+                library.checkOut(userInput);
+                break;
+            case 3:
                 System.out.println("Thanks for using the application");
                 System.exit(0);
                 break;
@@ -29,5 +34,11 @@ public class Input {
     private int getMenu(Scanner scanner) {
         System.out.println("Choose an option: ");
         return scanner.nextInt();
+    }
+
+    private String getBook(Scanner scanner, String message) {
+        System.out.println(message);
+        scanner.nextLine();
+        return scanner.nextLine();
     }
 }
