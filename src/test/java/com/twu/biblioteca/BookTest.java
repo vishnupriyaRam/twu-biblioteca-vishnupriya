@@ -11,6 +11,12 @@ class BookTest {
         Book book2 = new Book("Harry Potter");
 
         assertEquals(book1, book2);
+    }
 
+    @Test
+    void shouldReturnTheTitleOfTheBook() {
+        Book book = new Book("Harry Potter");
+        String expected = "Harry Potter";
+        assertEquals(expected, book.toString());
     }
 }
