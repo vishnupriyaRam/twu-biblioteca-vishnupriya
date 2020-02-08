@@ -61,7 +61,8 @@ class InputTest {
 
         assertEquals(expected, outContent.toString().replace("1. List available Books\n" +
                 "2. Checkout a book\n" +
-                "3. Quit\n" +
+                "3. Return a book\n" +
+                "4. Quit\n" +
                 "Choose an option: ", "").trim());
     }
 
@@ -76,7 +77,8 @@ class InputTest {
 
         assertEquals(expected, outContent.toString().replace("1. List available Books\n" +
                 "2. Checkout a book\n" +
-                "3. Quit\n" +
+                "3. Return a book\n" +
+                "4. Quit\n" +
                 "Choose an option: " + "Please select a valid option!", "").trim());
     }
 
@@ -87,7 +89,8 @@ class InputTest {
         Input input = new Input();
         String expected = "1. List available Books\n" +
                 "2. Checkout a book\n" +
-                "3. Quit\n" +
+                "3. Return a book\n" +
+                "4. Quit\n" +
                 "Choose an option: \n" + "\n" + "\n" +
                 "Harry Potter | Rowling JK | 2001\n" +
                 "The Fault in our stars | Green John | 2012\n" +
@@ -106,9 +109,12 @@ class InputTest {
 
         String expected = "1. List available Books\n" +
                 "2. Checkout a book\n" +
-                "3. Quit\n" +
+                "3. Return a book\n" +
+                "4. Quit\n" +
                 "Choose an option: \n" +
-                "Enter book to checkout:";
+                "Enter book to checkout: \n" +
+                "\n" +
+                "Thank you! Enjoy the book";
         input.getInput();
 
         assertEquals(expected, outContent.toString().trim());
