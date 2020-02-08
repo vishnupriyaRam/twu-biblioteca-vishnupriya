@@ -27,6 +27,7 @@ public class Library {
     public void checkOut(String title) {
         Book book = getBook(title);
         checkedOut.add(book);
+        System.out.println("\nThank you! Enjoy the book\n");
     }
 
     private Book getBook(String title) {

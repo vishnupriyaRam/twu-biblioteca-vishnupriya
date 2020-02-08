@@ -32,7 +32,7 @@ class BibliotecaAppTest {
 
     @Test
     void shouldReturnWelcomeMessageToTheUser() {
-        String expected = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!";
+        String expected = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!\n";
 
         bibliotecaApp.displayWelcomeMessage();
 

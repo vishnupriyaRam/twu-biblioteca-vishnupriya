@@ -51,4 +51,14 @@ class LibraryTest {
 
         assertEquals(expected, outContent.toString().trim());
     }
+
+    @Test
+    void shouldTestIfTheUserIsNotifiedOnSuccessfulCheckout() {
+        Library library = new Library();
+        String expected = "Thank you! Enjoy the book";
+
+        library.checkOut("Harry Potter");
+
+        assertEquals(expected, outContent.toString().trim());
+    }
 }
