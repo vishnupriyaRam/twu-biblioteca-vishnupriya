@@ -28,7 +28,7 @@ class LibraryTest {
     }
 
     @AfterEach
-    void reset(){
+    void reset() {
         System.setOut(originalOut);
     }
 

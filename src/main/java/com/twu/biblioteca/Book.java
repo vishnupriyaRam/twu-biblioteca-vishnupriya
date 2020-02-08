@@ -14,8 +14,8 @@ public class Book {
         this.year = year;
     }
 
-    public void viewBookInfo(){
-        System.out.println(title + " | " +  author + " | " + year);
+    public void viewBookInfo() {
+        System.out.println(title + " | " + author + " | " + year);
     }
 
     @Override
