@@ -47,4 +47,17 @@ class InputTest {
 
         assertEquals(expected, outContent.toString().trim());
     }
+
+    @Test
+    void shouldTestIfTheUserCannotChooseAnInvalidOption() {
+        String data = "6\n2";
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+        Input input = new Input();
+        String expected = "Please select a valid option!";
+
+        input.getInput();
+
+        assertEquals(expected, outContent.toString().replace("1. List available Books \n"
+                + "\n" + "Choose an option:", "").trim());
+    }
 }
