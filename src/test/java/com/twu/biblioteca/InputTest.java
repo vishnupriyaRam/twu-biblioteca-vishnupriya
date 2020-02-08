@@ -119,4 +119,23 @@ class InputTest {
 
         assertEquals(expected, outContent.toString().trim());
     }
+
+    @Test
+    void shouldTestIfTheUserIsAbleToReturnTheBook() {
+        String data = "2\nHarry Potter\n3\nHarry Potter";
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+        Input input = new Input();
+
+        String expected = "1. List available Books\n" +
+                "2. Checkout a book\n" +
+                "3. Return a book\n" +
+                "4. Quit\n" +
+                "Choose an option: \n" +
+                "Enter book to checkout: \n" +
+                "\n" +
+                "Thank you! Enjoy the book";
+        input.getInput();
+
+        assertEquals(expected, outContent.toString().trim());
+    }
 }

@@ -18,10 +18,14 @@ public class Input {
                 System.out.println("\n");
                 break;
             case 2:
-                String userInput = getBook(in, "Enter book to checkout: ");
-                library.checkOut(userInput);
+                String bookToBeCheckedOut = getBook(in, "Enter book to checkout: ");
+                library.checkOut(bookToBeCheckedOut);
                 break;
             case 3:
+                String bookToBeReturned = getBook(in, "Enter book to be returned: ");
+                library.returnBook(bookToBeReturned);
+                break;
+            case 4:
                 System.out.println("Thanks for using the application");
                 System.exit(0);
                 break;
