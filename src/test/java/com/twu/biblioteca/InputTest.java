@@ -11,15 +11,16 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class BibliotecaAppTest {
 
+class InputTest {
+
+    private InputStream originalIn;
     private PrintStream originalOut;
-    private BibliotecaApp bibliotecaApp;
     private ByteArrayOutputStream outContent;
 
     @BeforeEach
     void setUp() {
-        bibliotecaApp = new BibliotecaApp();
+        originalIn = System.in;
         outContent = new ByteArrayOutputStream();
         originalOut = System.out;
         System.setOut(new PrintStream(outContent));
@@ -27,14 +28,22 @@ class BibliotecaAppTest {
 
     @AfterEach
     void afterEach() {
+        System.setIn(originalIn);
         System.setOut(originalOut);
     }
 
     @Test
-    void shouldReturnWelcomeMessageToTheUser() {
-        String expected = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!";
+    void shouldTestIfTheUserIsAbleToChooseAMenuOption() {
+        String data = "1\n2";
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+        Input input = new Input();
+        String expected = "1. List available Books \n" + "\n" +
+                "Choose an option: \n" +
+                "Harry Potter | Rowling JK | 2001\n" +
+                "The Fault in our stars | Green John | 2012\n" +
+                "A song of ice and fire | Martin RR George | 1996";
 
-        bibliotecaApp.displayWelcomeMessage();
+        input.getInput();
 
         assertEquals(expected, outContent.toString().trim());
     }

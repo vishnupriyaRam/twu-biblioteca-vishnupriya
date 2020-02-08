@@ -10,8 +10,9 @@ public class BibliotecaApp {
         displayWelcomeMessage();
 
         System.out.println("\nList of Books Available currently \n");
-        Library library = new Library();
-        library.view();
+
+        Input input = new Input();
+        input.getInput();
 
     }
 
