@@ -13,8 +13,8 @@ public class Library {
 
     public void view() {
         booksAvailable.forEach(book -> {
-            if(!checkedOut.contains(book))
-            book.viewBookInfo();
+            if (!checkedOut.contains(book))
+                book.viewBookInfo();
         });
     }
 
@@ -26,14 +26,17 @@ public class Library {
 
     public void checkOut(String title) {
         Book book = getBook(title);
-        checkedOut.add(book);
-        System.out.println("\nThank you! Enjoy the book\n");
+        if (book != null) {
+            checkedOut.add(book);
+            System.out.println("\nThank you! Enjoy the book\n");
+        } else
+            System.out.println("\nSorry, that book is not available\n");
     }
 
     private Book getBook(String title) {
         Book bookNeeded = new Book(title);
-        for (Book book: booksAvailable) {
-            if(book.equals(bookNeeded))
+        for (Book book : booksAvailable) {
+            if (book.equals(bookNeeded))
                 return book;
         }
         return null;

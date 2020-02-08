@@ -61,4 +61,14 @@ class LibraryTest {
 
         assertEquals(expected, outContent.toString().trim());
     }
+
+    @Test
+    void shouldTestIfTheUserIsNotifiedWhenTheRequestedBookIsNotAvailable() {
+        Library library = new Library();
+        String expected = "Sorry, that book is not available";
+
+        library.checkOut("Shawshank Redemption");
+
+        assertEquals(expected, outContent.toString().trim());
+    }
 }
