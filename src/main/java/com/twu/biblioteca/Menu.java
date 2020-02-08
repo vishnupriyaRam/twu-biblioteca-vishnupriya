@@ -11,11 +11,12 @@ public class Menu {
         createMenu();
     }
 
-    private void createMenu(){
+    private void createMenu() {
         menuItems.add(MenuItem.LIST_BOOKS);
+        menuItems.add(MenuItem.QUIT);
     }
 
-    void viewMenu(){
+    void viewMenu() {
         menuItems.forEach(MenuItem::viewItem);
     }
 }

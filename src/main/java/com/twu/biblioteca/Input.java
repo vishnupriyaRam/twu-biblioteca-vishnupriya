@@ -11,13 +11,18 @@ public class Input {
         menu.viewMenu();
         int userOption = getMenu(in);
 
-        if (userOption == 1) {
-            library.view();
-        } else if (userOption == 2) {
-            System.out.println("Thanks for using the application");
-            return;
-        } else {
-            System.out.println("Please select a valid option!");
+        switch (userOption) {
+            case 1:
+                System.out.println("\nList of Books Available currently \n");
+                library.view();
+                break;
+            case 2:
+                System.out.println("Thanks for using the application");
+                System.exit(0);
+                break;
+            default:
+                System.out.println("Please select a valid option!");
+                break;
         }
     }
 

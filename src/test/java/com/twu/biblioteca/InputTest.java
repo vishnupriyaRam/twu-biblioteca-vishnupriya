@@ -57,8 +57,11 @@ class InputTest {
 
         input.getInput();
 
-        assertEquals(expected, outContent.toString().replace("1. List available Books \n"
-                + "\n" + "Choose an option:", "").trim());
+        assertEquals(expected, outContent.toString().replace("1. List available Books \n" +
+                "\n" +
+                "2. Quit\n" +
+                "\n" +
+                "Choose an option: ", "").trim());
     }
 
     @Test
@@ -72,5 +75,27 @@ class InputTest {
 
         assertEquals(expected, outContent.toString().replace("1. List available Books \n"
                 + "\n" + "Choose an option:", "").trim());
+    }
+
+    @Test
+    void shouldTestIfTheUserIsAbleToContinueUsingTheAppUntilQuitIsChosen() {
+        String data = "1\n2";
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+        Input input = new Input();
+        String expected = "1. List available Books \n" +
+                "\n" +
+                "2. Quit\n" +
+                "\n" +
+                "Choose an option: \n" +
+                "\n" +
+                "List of Books Available currently \n" +
+                "\n" +
+                "Harry Potter | Rowling JK | 2001\n" +
+                "The Fault in our stars | Green John | 2012\n" +
+                "A song of ice and fire | Martin RR George | 1996";
+
+        input.getInput();
+
+        assertEquals(expected, outContent.toString().trim());
     }
 }
