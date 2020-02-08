@@ -11,8 +11,11 @@ public class Library {
         addBooks();
     }
 
-    public String getBooksAvailable(){
-        return Arrays.toString(booksAvailable.toArray()).replace("[", "").replace(", ", "").replace("]", "");
+    public String getBooksAvailable() {
+        return Arrays.toString(booksAvailable.toArray())
+                .replace("[", "")
+                .replace(", ", "")
+                .replace("]", "");
     }
 
     private void addBooks() {
