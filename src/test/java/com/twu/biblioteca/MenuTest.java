@@ -6,21 +6,18 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import static org.junit.jupiter.api.Assertions.*;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class LibraryTest {
-
+class MenuTest {
     private PrintStream originalOut;
     private ByteArrayOutputStream outContent;
-    private Library library;
 
     @BeforeEach
     void setUp() {
         outContent = new ByteArrayOutputStream();
         originalOut = System.out;
         System.setOut(new PrintStream(outContent));
-        library = new Library();
     }
 
     @AfterEach
@@ -29,13 +26,11 @@ class LibraryTest {
     }
 
     @Test
-    void shouldTestIfTheBookListIsViewable() {
-        String firstBook = "Harry Potter | Rowling JK | 2001\n";
-        String secondBook = "The Fault in our stars | Green John | 2012\n";
-        String thirdBook = "A song of ice and fire | Martin RR George | 1996";
-        String expected = firstBook + secondBook + thirdBook;
+    void shouldReturnTheListOfMenuItems() {
+        Menu menu = new Menu();
+        String expected = "1. List available Books";
 
-        library.view();
+        menu.viewMenu();
 
         assertEquals(expected, outContent.toString().trim());
     }
