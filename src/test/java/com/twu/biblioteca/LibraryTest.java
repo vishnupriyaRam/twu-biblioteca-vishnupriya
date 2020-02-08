@@ -101,4 +101,14 @@ class LibraryTest {
 
         assertEquals(expected, outContent.toString().trim());
     }
+
+    @Test
+    void shouldTestIfTheUserIsNotifiedOnUnsuccessfulReturnOfTheBook() {
+        Library library = new Library();
+        String expected = "That is not a valid book to return.";
+
+        library.returnBook("2 States");
+
+        assertEquals(expected, outContent.toString().trim());
+    }
 }

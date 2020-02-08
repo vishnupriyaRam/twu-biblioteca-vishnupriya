@@ -17,7 +17,7 @@ public enum MenuItem {
         return menuItem;
     }
 
-    public void viewItem(){
+    public void viewItem() {
         System.out.println(menuItem);
     }
 

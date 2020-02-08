@@ -47,6 +47,7 @@ public class Library {
         if (checkedOut.contains(book)) {
             checkedOut.remove(book);
             System.out.println("\nThank you for returning the book\n");
-        }
+        } else
+            System.out.println("\nThat is not a valid book to return.\n");
     }
 }
