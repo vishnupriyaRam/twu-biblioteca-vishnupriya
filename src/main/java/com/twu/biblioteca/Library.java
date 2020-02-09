@@ -28,9 +28,9 @@ public class Library {
         Book book = getBook(title);
         if (book != null) {
             checkedOut.add(book);
-            System.out.println("\nThank you! Enjoy the book\n");
+            System.out.println(NotificationMessages.CHECKOUT_SUCCESS);
         } else
-            System.out.println("\nSorry, that book is not available\n");
+            System.out.println(NotificationMessages.CHECKOUT_FAILURE);
     }
 
     private Book getBook(String title) {
@@ -46,8 +46,8 @@ public class Library {
         Book book = getBook(title);
         if (checkedOut.contains(book)) {
             checkedOut.remove(book);
-            System.out.println("\nThank you for returning the book\n");
+            System.out.println(NotificationMessages.RETURN_SUCCESS);
         } else
-            System.out.println("\nThat is not a valid book to return.\n");
+            System.out.println(NotificationMessages.RETURN_FAILURE);
     }
 }
