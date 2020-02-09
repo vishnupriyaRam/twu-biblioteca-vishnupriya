@@ -8,8 +8,8 @@ public enum MenuItem {
 
     private String menuItem;
 
-    MenuItem(String menuItems) {
-        this.menuItem = menuItems;
+    MenuItem(String menuItem) {
+        this.menuItem = menuItem;
     }
 
     @Override
