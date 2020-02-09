@@ -7,12 +7,9 @@ public class BibliotecaApp {
     }
 
     public void startApp() {
-        Library library = new Library();
-        Menu menu = new Menu();
-
         displayWelcomeMessage();
 
-        Input input = new Input(library, menu);
+        Input input = new Input();
 
         while (true) input.getInput();
     }
