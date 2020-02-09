@@ -28,9 +28,9 @@ public class Library {
         Book book = getBook(title);
         if (book != null) {
             checkedOut.add(book);
-            System.out.println(NotificationMessages.CHECKOUT_SUCCESS);
+            System.out.println(NotificationMessages.CHECKOUT_SUCCESS.getMessage());
         } else
-            System.out.println(NotificationMessages.CHECKOUT_FAILURE);
+            System.out.println(NotificationMessages.CHECKOUT_FAILURE.getMessage());
     }
 
     private Book getBook(String title) {
@@ -46,8 +46,8 @@ public class Library {
         Book book = getBook(title);
         if (checkedOut.contains(book)) {
             checkedOut.remove(book);
-            System.out.println(NotificationMessages.RETURN_SUCCESS);
+            System.out.println(NotificationMessages.RETURN_SUCCESS.getMessage());
         } else
-            System.out.println(NotificationMessages.RETURN_FAILURE);
+            System.out.println(NotificationMessages.RETURN_FAILURE.getMessage());
     }
 }

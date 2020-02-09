@@ -44,7 +44,7 @@ class LibraryTest {
     @Test
     void shouldTestIfACustomerIsAbleToCheckoutABook() {
         Library library = new Library();
-        String expected = NotificationMessages.CHECKOUT_SUCCESS + "\n" +
+        String expected = "Thank you! Enjoy the book\n" + "\n" +
                 "The Fault in our stars | Green John | 2012\n" +
                 "A song of ice and fire | Martin RR George | 1996";
 
@@ -57,7 +57,7 @@ class LibraryTest {
     @Test
     void shouldTestIfTheUserIsNotifiedOnSuccessfulCheckout() {
         Library library = new Library();
-        String expected = String.valueOf(NotificationMessages.CHECKOUT_SUCCESS);
+        String expected = "Thank you! Enjoy the book";
 
         library.checkOut("Harry Potter");
 
@@ -67,7 +67,7 @@ class LibraryTest {
     @Test
     void shouldTestIfTheUserIsNotifiedWhenTheRequestedBookIsNotAvailable() {
         Library library = new Library();
-        String expected = String.valueOf(NotificationMessages.CHECKOUT_FAILURE);
+        String expected = "Sorry, that book is not available";
 
         library.checkOut("Shawshank Redemption");
 
@@ -78,8 +78,8 @@ class LibraryTest {
     void shouldTestIfTheCustomerIsAbleToReturnTheBook() {
         Library library = new Library();
 
-        String expected = NotificationMessages.CHECKOUT_SUCCESS + "\n" +
-                NotificationMessages.RETURN_SUCCESS + "\n" +
+        String expected = "Thank you! Enjoy the book\n" + "\n" + "\n" +
+                "Thank you for returning the book\n" + "\n" +
                 "Harry Potter | Rowling JK | 2001\n" +
                 "The Fault in our stars | Green John | 2012\n" +
                 "A song of ice and fire | Martin RR George | 1996";
@@ -94,7 +94,7 @@ class LibraryTest {
     @Test
     void shouldTestIfTheUserIsNotifiedOnSuccessfulReturn() {
         Library library = new Library();
-        String expected = NotificationMessages.CHECKOUT_SUCCESS + "\n" + NotificationMessages.RETURN_SUCCESS;
+        String expected = "Thank you! Enjoy the book\n" + "\n" + "\n" + "Thank you for returning the book";
 
         library.checkOut("Harry Potter");
         library.returnBook("Harry Potter");
@@ -105,7 +105,7 @@ class LibraryTest {
     @Test
     void shouldTestIfTheUserIsNotifiedOnUnsuccessfulReturnOfTheBook() {
         Library library = new Library();
-        String expected = String.valueOf(NotificationMessages.RETURN_FAILURE);
+        String expected = "That is not a valid book to return.";
 
         library.returnBook("2 States");
 

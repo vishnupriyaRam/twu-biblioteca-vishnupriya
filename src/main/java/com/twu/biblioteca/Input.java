@@ -48,9 +48,9 @@ public class Input {
 
     private String getBook(Scanner scanner, String message) {
         System.out.println(message);
-        if(scanner.hasNextLine()){
-            return scanner.nextLine();
-        }
-        return null;
+        scanner.nextLine();
+        return scanner.nextLine();
+
+
     }
 }

@@ -11,4 +11,8 @@ public enum NotificationMessages {
     NotificationMessages(String message) {
         this.message = message;
     }
+
+    public String getMessage() {
+        return message;
+    }
 }
