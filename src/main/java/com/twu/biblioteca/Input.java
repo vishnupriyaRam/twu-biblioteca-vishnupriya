@@ -3,8 +3,14 @@ package com.twu.biblioteca;
 import java.util.Scanner;
 
 public class Input {
-    Library library = new Library();
-    Menu menu = new Menu();
+    Library library;
+    Menu menu;
+
+    public Input(Library library, Menu menu) {
+        this.library = library;
+        this.menu = menu;
+
+    }
 
     void getInput() {
         Scanner in = new Scanner(System.in);
@@ -42,7 +48,9 @@ public class Input {
 
     private String getBook(Scanner scanner, String message) {
         System.out.println(message);
-        scanner.nextLine();
-        return scanner.nextLine();
+        if(scanner.hasNextLine()){
+            return scanner.nextLine();
+        }
+        return null;
     }
 }

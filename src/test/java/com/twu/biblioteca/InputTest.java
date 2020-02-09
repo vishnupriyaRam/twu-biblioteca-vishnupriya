@@ -17,6 +17,8 @@ class InputTest {
     private InputStream originalIn;
     private PrintStream originalOut;
     private ByteArrayOutputStream outContent;
+    Library library;
+    Menu menu;
 
     @BeforeEach
     void setUp() {
@@ -24,6 +26,8 @@ class InputTest {
         outContent = new ByteArrayOutputStream();
         originalOut = System.out;
         System.setOut(new PrintStream(outContent));
+        library = new Library();
+        menu = new Menu();
     }
 
     @AfterEach
@@ -36,11 +40,14 @@ class InputTest {
     void shouldTestIfTheUserIsAbleToChooseAMenuOption() {
         String data = "1";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
-        Input input = new Input();
+        Input input = new Input(library, menu);
         String expected = "1. List available Books\n" +
                 "2. Checkout a book\n" +
-                "3. Quit\n" +
-                "Choose an option: \n" + "\n" + "\n" +
+                "3. Return a book\n" +
+                "4. Quit\n" +
+                "Choose an option: \n" +
+                "\n" +
+                "\n" +
                 "Harry Potter | Rowling JK | 2001\n" +
                 "The Fault in our stars | Green John | 2012\n" +
                 "A song of ice and fire | Martin RR George | 1996";
@@ -54,7 +61,7 @@ class InputTest {
     void shouldTestIfTheUserCannotChooseAnInvalidOption() {
         String data = "6";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
-        Input input = new Input();
+        Input input = new Input(library, menu);
         String expected = "Please select a valid option!";
 
         input.getInput();
@@ -68,10 +75,11 @@ class InputTest {
 
     @Test
     void shouldTestIfTheUserIsAbleToQuitTheApplication() {
-        String data = "3";
+        String data = "4";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
-        Input input = new Input();
+        Input input = new Input(library, menu);
         String expected = "";
+
 
         input.getInput();
 
@@ -84,9 +92,9 @@ class InputTest {
 
     @Test
     void shouldTestIfTheUserIsAbleToContinueUsingTheAppUntilQuitIsChosen() {
-        String data = "1\n3";
+        String data = "1\n4";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
-        Input input = new Input();
+        Input input = new Input(library, menu);
         String expected = "1. List available Books\n" +
                 "2. Checkout a book\n" +
                 "3. Return a book\n" +
@@ -103,9 +111,9 @@ class InputTest {
 
     @Test
     void shouldTestIfTheUserIsAbleToCheckoutTheBook() {
-        String data = "2\nHarry Potter\n1";
+        String data = "2\nHarry Potter";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
-        Input input = new Input();
+        Input input = new Input(library, menu);
 
         String expected = "1. List available Books\n" +
                 "2. Checkout a book\n" +
@@ -114,26 +122,7 @@ class InputTest {
                 "Choose an option: \n" +
                 "Enter book to checkout: \n" +
                 "\n" +
-                "Thank you! Enjoy the book";
-        input.getInput();
-
-        assertEquals(expected, outContent.toString().trim());
-    }
-
-    @Test
-    void shouldTestIfTheUserIsAbleToReturnTheBook() {
-        String data = "2\nHarry Potter\n3\nHarry Potter";
-        System.setIn(new ByteArrayInputStream(data.getBytes()));
-        Input input = new Input();
-
-        String expected = "1. List available Books\n" +
-                "2. Checkout a book\n" +
-                "3. Return a book\n" +
-                "4. Quit\n" +
-                "Choose an option: \n" +
-                "Enter book to checkout: \n" +
-                "\n" +
-                "Thank you! Enjoy the book";
+                "Sorry, that book is not available";
         input.getInput();
 
         assertEquals(expected, outContent.toString().trim());
