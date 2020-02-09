@@ -3,8 +3,13 @@ package com.twu.biblioteca;
 import java.util.Scanner;
 
 public class Input {
-    Library library = new Library();
-    Menu menu = new Menu();
+    Library library;
+    Menu menu;
+
+    public Input(Library library, Menu menu) {
+        this.library = library;
+        this.menu = menu;
+    }
 
     void getInput() {
         Scanner in = new Scanner(System.in);
