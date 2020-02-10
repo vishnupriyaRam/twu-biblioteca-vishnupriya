@@ -49,7 +49,7 @@ class LibraryTest {
     }
 
     @Test
-    void shouldTestIfACustomerIsAbleToCheckoutABook() { // TODO - naming like a spec
+    void shouldTestIfACheckedOutBookIsNotViewableInTheListOfAvailableBooks() {
         String expected = "Thank you! Enjoy the book\n" + "\n" +
                 "The Fault in our stars | Green John | 2012\n" +
                 "A song of ice and fire | Martin RR George | 1996";
