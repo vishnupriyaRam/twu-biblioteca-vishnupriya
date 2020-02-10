@@ -14,16 +14,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 class LibraryTest {
-
-    private PrintStream originalOut;
-    private ByteArrayOutputStream outContent;
-    private Library library; // TODO - again be careful at using the common stateful variables / fields - because then it'll become hard to parallelize
+    private Library library;
 
     @BeforeEach
     void setUp() {
-        outContent = new ByteArrayOutputStream();
-        originalOut = System.out;
-        System.setOut(new PrintStream(outContent));
         List<Book> books = new ArrayList<>();
         books.add(new Book("Harry Potter", "Rowling JK", "2001"));
         books.add(new Book("The Fault in our stars", "Green John", "2012"));
@@ -31,19 +25,12 @@ class LibraryTest {
         library = new Library(books);
     }
 
-    @AfterEach
-    void reset() {
-        System.setOut(originalOut);
-    }
-
     @Test
-    void shouldTestIfTheBookListIsViewable() { // TODO - is viewable. spec name. shouldTest? - I'll suggest in your free time, go explore how people have been writing / naming their tests. - You'll also make new friends (who might think you're weird) or you can go to github too.
+    void shouldTestIfTheBookListIsDisplayed() {
         String firstBook = "Harry Potter | Rowling JK | 2001\n";
         String secondBook = "The Fault in our stars | Green John | 2012\n";
         String thirdBook = "A song of ice and fire | Martin RR George | 1996";
         String expected = firstBook + secondBook + thirdBook;
-
-
 
         assertEquals(expected, library.view());
     }
@@ -54,7 +41,6 @@ class LibraryTest {
                 "A song of ice and fire | Martin RR George | 1996";
 
         library.checkout("Harry Potter");
-
 
         assertEquals(expected, library.view());
     }
@@ -75,7 +61,6 @@ class LibraryTest {
 
     @Test
     void shouldTestIfTheReturnedBookAppearsInTheListOfAvailableBooks() {
-
         String expected = "Harry Potter | Rowling JK | 2001\n" +
                 "The Fault in our stars | Green John | 2012\n" +
                 "A song of ice and fire | Martin RR George | 1996";
