@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.model;
 
 public enum NotificationMessages {
     CHECKOUT_SUCCESS("\nThank you! Enjoy the book\n"),

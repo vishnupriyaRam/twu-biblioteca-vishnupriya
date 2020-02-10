@@ -1,5 +1,8 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.controller.BibliotecaApp;
+import com.twu.biblioteca.model.Library;
+import com.twu.biblioteca.model.Menu;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,7 +22,7 @@ class BibliotecaAppTest {
 
     @BeforeEach
     void setUp() {
-        bibliotecaApp = new BibliotecaApp();
+        bibliotecaApp = new BibliotecaApp(new Library(), new Menu());
         outContent = new ByteArrayOutputStream();
         originalOut = System.out;
         System.setOut(new PrintStream(outContent));

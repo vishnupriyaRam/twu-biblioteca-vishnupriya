@@ -1,4 +1,7 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.view;
+
+import com.twu.biblioteca.model.Library;
+import com.twu.biblioteca.model.Menu;
 
 import java.util.Scanner;
 
@@ -12,7 +15,7 @@ public class Input {
 
     }
 
-    void getInput() {
+    public void getInput() {
         Scanner in = new Scanner(System.in);
         menu.viewMenu();
         String userOption = getMenu(in);

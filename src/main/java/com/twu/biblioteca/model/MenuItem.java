@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.model;
 
 public enum MenuItem {
     LIST_BOOKS("1. List available Books"),

@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ public class Menu {
 
     }
 
-    void viewMenu() {
+    public void viewMenu() {
         menuItems.forEach(MenuItem::viewItem);
     }
 }

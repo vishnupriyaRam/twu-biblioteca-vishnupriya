@@ -1,4 +1,8 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.controller;
+
+import com.twu.biblioteca.view.Input;
+import com.twu.biblioteca.model.Library;
+import com.twu.biblioteca.model.Menu;
 
 public class BibliotecaApp {
     Library library;
