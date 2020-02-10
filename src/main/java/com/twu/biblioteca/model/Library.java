@@ -36,7 +36,7 @@ public class Library {
             System.out.println(NotificationMessages.RETURN_FAILURE.getMessage());
     }
 
-    private void addBooks() {
+    private void addBooks() { // TODO - typically you'll parameterize this. - This is a decision, usually you'll push decision to the outer layers of your software
         booksAvailable.add(new Book("Harry Potter", "Rowling JK", "2001"));
         booksAvailable.add(new Book("The Fault in our stars", "Green John", "2012"));
         booksAvailable.add(new Book("A song of ice and fire", "Martin RR George", "1996"));

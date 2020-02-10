@@ -5,6 +5,7 @@ import com.twu.biblioteca.model.Menu;
 
 import java.util.Scanner;
 
+// TODO - list down responsibilites of the INPUT class.
 public class Input {
     Library library;
     Menu menu;

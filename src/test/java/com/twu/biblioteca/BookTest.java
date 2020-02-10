@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca; // TODO - model package is missing
 
 import com.twu.biblioteca.model.Book;
 import org.junit.jupiter.api.AfterEach;
@@ -10,14 +10,14 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BookTest {
-    private PrintStream originalOut;
+class BookTest { // TODO - can these tests execute in parallel? - Why would I want it? Faster execution.
+    private PrintStream originalOut; // TODO - this is shared.
     private ByteArrayOutputStream outContent;
 
     @BeforeEach
     void setUp() {
         outContent = new ByteArrayOutputStream();
-        originalOut = System.out;
+        originalOut = System.out; // TODO - this smell exists because we are trying to mock out a global dependency, and hence have to be sure of its lifecycle. If this was parameterized, we could be more carefree.
         System.setOut(new PrintStream(outContent));
     }
 
@@ -26,13 +26,13 @@ class BookTest {
         System.setOut(originalOut);
     }
 
-    @Test
+    @Test // TODO - return? Test names to read as specs, will have less to zero tech words in them. "RETURN"
     void shouldReturnTheListOfBooksAvailable() {
         Book book = new Book("Harry Potter", "Rowling JK", "2001");
-        String expected = "Harry Potter | Rowling JK | 2001";
+        String expected = "Harry Potter | Rowling JK | 2001"; // TODO - isn't the expected wrong in this case? - Incorrect spec.
         book.viewBookInfo();
 
-        assertEquals(expected, outContent.toString().trim());
+        assertEquals(expected, outContent.toString().trim()); // TODO - why trim? But you can't change the actual? - That will hide potential bugs
     }
 
     @Test

@@ -15,7 +15,7 @@ class LibraryTest {
 
     private PrintStream originalOut;
     private ByteArrayOutputStream outContent;
-    private Library library;
+    private Library library; // TODO - again be careful at using the common stateful variables / fields - because then it'll become hard to parallelize
 
     @BeforeEach
     void setUp() {
@@ -31,7 +31,7 @@ class LibraryTest {
     }
 
     @Test
-    void shouldTestIfTheBookListIsViewable() {
+    void shouldTestIfTheBookListIsViewable() { // TODO - is viewable. spec name. shouldTest? - I'll suggest in your free time, go explore how people have been writing / naming their tests. - You'll also make new friends (who might think you're weird) or you can go to github too.
         String firstBook = "Harry Potter | Rowling JK | 2001\n";
         String secondBook = "The Fault in our stars | Green John | 2012\n";
         String thirdBook = "A song of ice and fire | Martin RR George | 1996";
@@ -43,7 +43,7 @@ class LibraryTest {
     }
 
     @Test
-    void shouldTestIfACustomerIsAbleToCheckoutABook() {
+    void shouldTestIfACustomerIsAbleToCheckoutABook() { // TODO - naming like a spec
         Library library = new Library();
         String expected = "Thank you! Enjoy the book\n" + "\n" +
                 "The Fault in our stars | Green John | 2012\n" +
@@ -60,7 +60,7 @@ class LibraryTest {
         Library library = new Library();
         String expected = "Thank you! Enjoy the book";
 
-        library.checkout("Harry Potter");
+        library.checkout("Harry Potter"); // TODO - you could probably use nesting to differentiate the scenarios?
 
         assertEquals(expected, outContent.toString().trim());
     }
