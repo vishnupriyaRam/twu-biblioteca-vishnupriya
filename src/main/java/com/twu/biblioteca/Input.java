@@ -15,9 +15,10 @@ public class Input {
     void getInput() {
         Scanner in = new Scanner(System.in);
         menu.viewMenu();
-        int userOption = getMenu(in);
+        String userOption = getMenu(in);
+        int option = Integer.parseInt(userOption);
 
-        switch (userOption) {
+        switch (option) {
             case 1:
                 System.out.println("\n");
                 library.view();
@@ -41,14 +42,13 @@ public class Input {
         }
     }
 
-    private int getMenu(Scanner scanner) {
+    private String getMenu(Scanner scanner) {
         System.out.println("Choose an option: ");
-        return scanner.nextInt();
+        return scanner.nextLine();
     }
 
     private String getBook(Scanner scanner, String message) {
         System.out.println(message);
-        scanner.nextLine();
         return scanner.nextLine();
 
 

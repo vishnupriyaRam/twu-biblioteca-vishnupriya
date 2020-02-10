@@ -130,7 +130,7 @@ class InputTest {
 
     @Test
     void shouldTestIfTheUserIsAbleToReturnTheBook() {
-        String data = "3\nHarryPotter";
+        String data = "3\nHarry Potter";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         Input input = new Input(library, menu);
 
@@ -141,7 +141,7 @@ class InputTest {
                 "Choose an option: \n" +
                 "Enter book to be returned: \n" +
                 "\n" +
-                "That is not a valid book to return";
+                "That is not a valid book to return.";
         input.getInput();
 
         assertEquals(expected, outContent.toString().trim());
