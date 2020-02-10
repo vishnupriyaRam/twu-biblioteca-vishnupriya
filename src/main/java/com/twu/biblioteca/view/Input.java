@@ -23,23 +23,7 @@ public class Input {
         int option = Integer.parseInt(userOption);
         MenuItem userChoice = MenuItem.values()[Math.min((option - 1), 4)];
 
-        switch (userChoice) {
-            case LIST_BOOKS:
-                view();
-                break;
-            case CHECKOUT:
-                checkout(in);
-                break;
-            case RETURN:
-                returnBook(in);
-                break;
-            case QUIT:
-                quit();
-                break;
-            default:
-                invalid();
-                break;
-        }
+        userChoice.performOperation(library);
     }
 
     private String getMenu(Scanner scanner) {
@@ -50,28 +34,5 @@ public class Input {
     private String getBook(Scanner scanner, String message) {
         System.out.println(message);
         return scanner.nextLine();
-    }
-
-    private void view() {
-        System.out.println(library.view());
-    }
-
-    private void checkout(Scanner in) {
-
-    }
-
-    private void returnBook(Scanner in) {
-        String bookToBeReturned = getBook(in, "Enter book to be returned: ");
-//        System.out.println(library.returnBook(bookToBeReturned).getMessage());
-        System.out.println(library.returnBook(bookToBeReturned));
-    }
-
-    private void quit() {
-        System.out.println("Thanks for using the application");
-        System.exit(0);
-    }
-
-    private void invalid() {
-        System.out.println("Please select a valid option!");
     }
 }
