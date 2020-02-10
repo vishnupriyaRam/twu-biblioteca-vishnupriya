@@ -7,7 +7,6 @@ public class Book {
     public final String title;
     public final String author;
     public final String year; // TODO - year as a string, sort of weird?
-    private final String delimiter = " | ";
 
     public Book(String title, String author, String year) {
         this.title = title;
@@ -31,7 +30,8 @@ public class Book {
 //    }
 
     public void view() {
-        System.out.println(title + delimiter + author + delimiter + year); // TODO - " | " is a magic literal. Changing the delimiter right now will be difficult.
+        String delimiter = " | ";
+        System.out.println(title + delimiter + author + delimiter + year);
     }
 
     @Override
