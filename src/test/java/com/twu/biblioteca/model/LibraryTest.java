@@ -23,10 +23,9 @@ class LibraryTest {
 
     @Test
     void shouldTestIfTheBookListIsDisplayed() {
-        String firstBook = "Harry Potter | Rowling JK | 2001\n";
-        String secondBook = "The Fault in our stars | Green John | 2012\n";
-        String thirdBook = "A song of ice and fire | Martin RR George | 1996";
-        String expected = firstBook + secondBook + thirdBook;
+        String expected = "Harry Potter | Rowling JK | 2001\n" +
+                "The Fault in our stars | Green John | 2012\n" +
+                "A song of ice and fire | Martin RR George | 1996";
 
         assertEquals(expected, library.view());
     }
