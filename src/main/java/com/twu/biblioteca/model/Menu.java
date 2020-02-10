@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
 
+//Todo Menu items not getting displayed in app
+
 public class Menu {
     List<MenuItem> menuItems;
 
@@ -14,11 +16,9 @@ public class Menu {
 
     public String viewMenu() {
         StringJoiner list = new StringJoiner("\n");
-        menuItems.forEach(menuItem -> {
-                    int index = menuItems.indexOf(menuItem) + 1;
-                    list.add(index + ". " + menuItem.viewItem());
-                }
-        );
+        for (int index = 0; index < menuItems.size(); index++)
+            list.add(index + 1 + ". " + menuItems.get(index).viewItem());
+
         return list.toString();
     }
 
