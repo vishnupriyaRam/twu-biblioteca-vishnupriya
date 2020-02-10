@@ -20,7 +20,7 @@ public class Library {
 
         booksAvailable.forEach(book -> {
             if (!checkedOut.contains(book)) {
-                list.add(book.view());
+                list.add(book.getDetails());
             }
         });
         return list.toString();
@@ -46,11 +46,11 @@ public class Library {
             return false;
     }
 
-    public Book getBook(String title) { // TODO - its private, so its still okay....
+    private Book getBook(String title) { // TODO - its private, so its still okay....
         for (Book book : booksAvailable) {
             if (book.hasSameName(title))
                 return book;
         }
-        return null; // TODO - don't return nulls? so what's the problem with nulls?
+        return new Book("", "", ""); // TODO - don't return nulls? so what's the problem with nulls?
     }
 }

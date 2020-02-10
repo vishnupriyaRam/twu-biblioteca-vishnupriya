@@ -1,6 +1,5 @@
 package com.twu.biblioteca.model;
 
-import com.twu.biblioteca.model.Menu;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,6 +33,6 @@ class MenuTest {
                 "3. Return a book\n" +
                 "4. Quit";
 
-        assertEquals(expected, menu.viewMenu());
+        assertEquals(expected, menu.getMenu());
     }
 }

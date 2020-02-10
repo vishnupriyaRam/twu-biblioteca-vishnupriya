@@ -10,7 +10,7 @@ class BookTest {
         Book book = new Book("Harry Potter", "Rowling JK", "2001");
         String expected = "Harry Potter | Rowling JK | 2001";
 
-        assertEquals(expected, book.view());
+        assertEquals(expected, book.getDetails());
     }
 
     @Test

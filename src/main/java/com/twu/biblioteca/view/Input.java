@@ -18,7 +18,7 @@ public class Input {
 
     public void getInput() {
         Scanner in = new Scanner(System.in);
-        System.out.println(menu.viewMenu());
+        System.out.println(menu.getMenu());
         String userOption = getMenu(in);
         int option = Integer.parseInt(userOption);
         MenuItem userChoice = MenuItem.values()[Math.min((option - 1), 4)];
@@ -57,9 +57,7 @@ public class Input {
     }
 
     private void checkout(Scanner in) {
-        String bookToBeCheckedOut = getBook(in, "Enter book to checkout: ");
-//        System.out.println(library.checkout(bookToBeCheckedOut).getMessage());
-        System.out.println(library.checkout(bookToBeCheckedOut));
+
     }
 
     private void returnBook(Scanner in) {

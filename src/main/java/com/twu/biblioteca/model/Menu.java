@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.StringJoiner;
 
 //Todo Menu items not getting displayed in app
+//Todo override these methods to perform the respective operations
+
 
 public class Menu {
     List<MenuItem> menuItems;
@@ -14,7 +16,7 @@ public class Menu {
         createMenu();
     }
 
-    public String viewMenu() {
+    public String getMenu() {
         StringJoiner list = new StringJoiner("\n");
         for (int index = 0; index < menuItems.size(); index++)
             list.add(index + 1 + ". " + menuItems.get(index).viewItem());

@@ -11,7 +11,7 @@ public class Book {
         this.year = year;
     }
 
-    public String view() {
+    public String getDetails() {
         String delimiter = " | ";
         return title + delimiter + author + delimiter + year;
     }
