@@ -1,10 +1,10 @@
 package com.twu.biblioteca.model;
 
 public enum NotificationMessages {
-    CHECKOUT_SUCCESS("\nThank you! Enjoy the book\n"),
-    CHECKOUT_FAILURE("\nSorry, that book is not available\n"),
-    RETURN_SUCCESS("\nThank you for returning the book\n"),
-    RETURN_FAILURE("\nThat is not a valid book to return.\n");
+    CHECKOUT_SUCCESS("Thank you! Enjoy the book"),
+    CHECKOUT_FAILURE("Sorry, that book is not available"),
+    RETURN_SUCCESS("Thank you for returning the book"),
+    RETURN_FAILURE("That is not a valid book to return.");
 
     String message;
 

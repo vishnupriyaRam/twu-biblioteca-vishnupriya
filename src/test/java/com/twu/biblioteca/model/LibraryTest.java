@@ -63,18 +63,14 @@ class LibraryTest {
     void shouldTestIfTheUserIsNotifiedOnSuccessfulCheckout() {
         String expected = "Thank you! Enjoy the book";
 
-        library.checkout("Harry Potter"); // TODO - you could probably use nesting to differentiate the scenarios?
-
-        assertEquals(expected, outContent.toString().trim());
+        assertEquals(expected, library.checkout("Harry Potter").getMessage());
     }
 
     @Test
     void shouldTestIfTheUserIsNotifiedWhenTheRequestedBookIsNotAvailable() {
         String expected = "Sorry, that book is not available";
 
-        library.checkout("Shawshank Redemption");
-
-        assertEquals(expected, outContent.toString().trim());
+        assertEquals(expected, library.checkout("Shawshank Redemption").getMessage());
     }
 
     @Test
@@ -92,20 +88,17 @@ class LibraryTest {
 
     @Test
     void shouldTestIfTheUserIsNotifiedOnSuccessfulReturn() {
-        String expected = "Thank you! Enjoy the book\n" + "\n" + "\n" + "Thank you for returning the book";
+        String expected = "Thank you for returning the book";
 
         library.checkout("Harry Potter");
-        library.returnBook("Harry Potter");
 
-        assertEquals(expected, outContent.toString().trim());
+        assertEquals(expected, library.returnBook("Harry Potter").getMessage());
     }
 
     @Test
     void shouldTestIfTheUserIsNotifiedOnUnsuccessfulReturnOfTheBook() {
         String expected = "That is not a valid book to return.";
 
-        library.returnBook("2 States");
-
-        assertEquals(expected, outContent.toString().trim());
+        assertEquals(expected, library.returnBook("2 States").getMessage());
     }
 }

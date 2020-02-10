@@ -27,18 +27,18 @@ public class Library {
         Book book = getBook(title);
         if (book != null) {
             checkedOut.add(book);
-            System.out.println(NotificationMessages.CHECKOUT_SUCCESS.getMessage());
+            return NotificationMessages.CHECKOUT_SUCCESS;
         } else
-            System.out.println(NotificationMessages.CHECKOUT_FAILURE.getMessage());
+            return NotificationMessages.CHECKOUT_FAILURE;
     }
 
-    public void returnBook(String title) {
+    public NotificationMessages returnBook(String title) {
         Book book = getBook(title);
         if (checkedOut.contains(book)) {
             checkedOut.remove(book);
-            System.out.println(NotificationMessages.RETURN_SUCCESS.getMessage());
+            return NotificationMessages.RETURN_SUCCESS;
         } else
-            System.out.println(NotificationMessages.RETURN_FAILURE.getMessage());
+            return NotificationMessages.RETURN_FAILURE;
     }
 
     private Book getBook(String title) {
