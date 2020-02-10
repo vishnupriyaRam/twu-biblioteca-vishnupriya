@@ -1,10 +1,10 @@
 package com.twu.biblioteca.model;
 
 public enum MenuItem {
-    LIST_BOOKS("1. List available Books"),
-    CHECKOUT("2. Checkout a book"),
-    RETURN("3. Return a book"),
-    QUIT("4. Quit");
+    LIST_BOOKS("List available Books"),
+    CHECKOUT("Checkout a book"),
+    RETURN("Return a book"),
+    QUIT("Quit");
 
     private String menuItem;
 

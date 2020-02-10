@@ -20,6 +20,5 @@ public class Menu {
         menuItems.add(MenuItem.CHECKOUT);
         menuItems.add(MenuItem.RETURN);
         menuItems.add(MenuItem.QUIT);
-
     }
 }
