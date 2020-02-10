@@ -1,6 +1,5 @@
 package com.twu.biblioteca.view;
 
-import com.sun.security.jgss.GSSUtil;
 import com.twu.biblioteca.model.Library;
 import com.twu.biblioteca.model.Menu;
 import com.twu.biblioteca.model.MenuItem;
@@ -22,7 +21,6 @@ public class Input {
         menu.viewMenu();
         String userOption = getMenu(in);
         int option = Integer.parseInt(userOption);
-
         MenuItem userChoice = MenuItem.values()[option - 1];
 
         switch (userChoice) {
@@ -73,7 +71,7 @@ public class Input {
         System.exit(0);
     }
 
-    private void invalid(){
+    private void invalid() {
         System.out.println("Please select a valid option!");
     }
 }
