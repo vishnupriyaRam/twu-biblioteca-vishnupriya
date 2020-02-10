@@ -4,9 +4,7 @@ import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.view.Input;
 import com.twu.biblioteca.model.Library;
 import com.twu.biblioteca.model.Menu;
-import com.twu.biblioteca.view.Output;
 
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 

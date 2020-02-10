@@ -1,5 +1,8 @@
 package com.twu.biblioteca.model;
 
+import com.twu.biblioteca.view.Input;
+import com.twu.biblioteca.view.Output;
+
 import java.util.Scanner;
 
 public enum MenuItem implements MenuController {
@@ -7,38 +10,41 @@ public enum MenuItem implements MenuController {
     LIST_BOOKS("List available Books") {
         @Override
         public void performOperation(Library library) {
-            library.view();
+            output.show(library.view());
         }
     },
     CHECKOUT("Checkout a book") {
         @Override
         public void performOperation(Library library) {
-            String bookToBeCheckedOut = getBook(in, "Enter book to checkout: ");
-            System.out.println(library.checkout(bookToBeCheckedOut));
+            String bookToBeCheckedOut = input.getBook(in, "Enter book to checkout: ");
+            output.showCheckout(library.checkout(bookToBeCheckedOut));
         }
     },
     RETURN("Return a book") {
         @Override
         public void performOperation(Library library) {
-            String bookToBeReturned = getBook(in, "Enter book to be returned: ");
-            System.out.println(library.returnBook(bookToBeReturned));
+            String bookToBeReturned = input.getBook(in, "Enter book to be returned: ");
+            output.showReturn(library.returnBook(bookToBeReturned));
         }
     },
     QUIT("Quit") {
         @Override
         public void performOperation(Library library) {
-            System.out.println("Thanks for using the application");
+            output.show("Thanks for using the application");
             System.exit(0);
         }
     },
     INVALID("\n") {
         @Override
         public void performOperation(Library library) {
-            System.out.println("Please select a valid option!");
+            output.show("Please select a valid option!");
         }
     };
 
     private String menuItem;
+    Input input;
+    Output output = new Output(System.out);
+
     Scanner in = new Scanner(System.in);
 
     MenuItem(String menuItem) {
@@ -54,8 +60,5 @@ public enum MenuItem implements MenuController {
         return menuItem;
     }
 
-    private static String getBook(Scanner scanner, String message) {
-        System.out.println(message);
-        return scanner.nextLine();
-    }
+
 }
