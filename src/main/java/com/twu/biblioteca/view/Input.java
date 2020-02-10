@@ -1,7 +1,9 @@
 package com.twu.biblioteca.view;
 
+import com.sun.security.jgss.GSSUtil;
 import com.twu.biblioteca.model.Library;
 import com.twu.biblioteca.model.Menu;
+import com.twu.biblioteca.model.MenuItem;
 
 import java.util.Scanner;
 
@@ -21,18 +23,19 @@ public class Input {
         String userOption = getMenu(in);
         int option = Integer.parseInt(userOption);
 
+        MenuItem userChoice = MenuItem.values()[option - 1];
 
-        switch (option) {
-            case 1:
+        switch (userChoice) {
+            case LIST_BOOKS:
                 view();
                 break;
-            case 2:
+            case CHECKOUT:
                 checkout(in);
                 break;
-            case 3:
+            case RETURN:
                 returnBook(in);
                 break;
-            case 4:
+            case QUIT:
                 quit();
                 break;
             default:
