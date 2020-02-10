@@ -23,24 +23,19 @@ public class Input {
 
         switch (option) {
             case 1:
-                System.out.println("\n");
-                library.view();
-                System.out.println("\n");
+                view();
                 break;
             case 2:
-                String bookToBeCheckedOut = getBook(in, "Enter book to checkout: ");
-                library.checkOut(bookToBeCheckedOut);
+                checkout(in);
                 break;
             case 3:
-                String bookToBeReturned = getBook(in, "Enter book to be returned: ");
-                library.returnBook(bookToBeReturned);
+                returnBook(in);
                 break;
             case 4:
-                System.out.println("Thanks for using the application");
-                System.exit(0);
+                quit();
                 break;
             default:
-                System.out.println("Please select a valid option!");
+                invalid();
                 break;
         }
     }
@@ -53,5 +48,30 @@ public class Input {
     private String getBook(Scanner scanner, String message) {
         System.out.println(message);
         return scanner.nextLine();
+    }
+
+    private void view() {
+        System.out.println("\n");
+        library.view();
+        System.out.println("\n");
+    }
+
+    private void checkout(Scanner in) {
+        String bookToBeCheckedOut = getBook(in, "Enter book to checkout: ");
+        library.checkOut(bookToBeCheckedOut);
+    }
+
+    private void returnBook(Scanner in) {
+        String bookToBeReturned = getBook(in, "Enter book to be returned: ");
+        library.returnBook(bookToBeReturned);
+    }
+
+    private void quit() {
+        System.out.println("Thanks for using the application");
+        System.exit(0);
+    }
+
+    private void invalid(){
+        System.out.println("Please select a valid option!");
     }
 }
