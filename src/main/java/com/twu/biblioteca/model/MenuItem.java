@@ -16,14 +16,16 @@ public enum MenuItem implements MenuController {
     CHECKOUT("Checkout a book") {
         @Override
         public void performOperation(Library library) {
-            String bookToBeCheckedOut = input.getBook(in, "Enter book to checkout: ");
+            output.show("Enter book to checkout: ");
+            String bookToBeCheckedOut = input.readLine();
             output.showCheckout(library.checkout(bookToBeCheckedOut));
         }
     },
     RETURN("Return a book") {
         @Override
         public void performOperation(Library library) {
-            String bookToBeReturned = input.getBook(in, "Enter book to be returned: ");
+            output.show("Enter book to be returned: ");
+            String bookToBeReturned = input.readLine();
             output.showReturn(library.returnBook(bookToBeReturned));
         }
     },
@@ -42,10 +44,8 @@ public enum MenuItem implements MenuController {
     };
 
     private String menuItem;
-    Input input;
+    Input input = new Input();
     Output output = new Output(System.out);
-
-    Scanner in = new Scanner(System.in);
 
     MenuItem(String menuItem) {
         this.menuItem = menuItem;

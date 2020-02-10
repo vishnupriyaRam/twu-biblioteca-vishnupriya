@@ -1,9 +1,11 @@
 package com.twu.biblioteca.controller;
 
 import com.twu.biblioteca.model.Book;
+import com.twu.biblioteca.model.MenuItem;
 import com.twu.biblioteca.view.Input;
 import com.twu.biblioteca.model.Library;
 import com.twu.biblioteca.model.Menu;
+import com.twu.biblioteca.view.Output;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +13,8 @@ import java.util.List;
 public class BibliotecaApp {
     Library library;
     Menu menu;
+    Input input = new Input();
+    Output output = new Output(System.out);
 
     final String welcomeMessage = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!\n";
 
@@ -22,13 +26,25 @@ public class BibliotecaApp {
     public void startApp() {
         displayWelcomeMessage();
 
-        Input input = new Input(library, menu);
+        while (true) {
+            output.show(menu.getMenu());
+            parseInput();
+        }
+    }
 
-        while (true) input.getInput();
+    private void parseInput(){
+        int option = getOption();
+        MenuItem userChoice = MenuItem.values()[Math.min((option - 1), 4)];
+        userChoice.performOperation(library);
+    }
+
+    private int getOption(){
+        output.show("Enter option: ");
+        return Integer.parseInt(input.readLine());
     }
 
     public void displayWelcomeMessage() {
-        System.out.println(welcomeMessage);
+        output.show(welcomeMessage);
     }
 
     public static void main(String[] args) {

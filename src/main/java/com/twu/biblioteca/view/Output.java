@@ -1,7 +1,5 @@
 package com.twu.biblioteca.view;
 
-import com.twu.biblioteca.model.Library;
-import com.twu.biblioteca.model.Menu;
 import com.twu.biblioteca.model.NotificationMessages;
 
 import java.io.PrintStream;

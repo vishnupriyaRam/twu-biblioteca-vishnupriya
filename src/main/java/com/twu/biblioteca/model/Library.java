@@ -51,6 +51,6 @@ public class Library {
             if (book.hasSameName(title))
                 return book;
         }
-        return new Book("", "", ""); // TODO - don't return nulls? so what's the problem with nulls?
+        return null; // TODO - don't return nulls? so what's the problem with nulls?
     }
 }
