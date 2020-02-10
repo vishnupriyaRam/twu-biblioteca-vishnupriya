@@ -26,6 +26,8 @@ public class Library {
         return list.toString();
     }
 
+    // TODO - what are different ways to not break CSQ here?
+    // TODO - is this a valid usecase to break CQS? - Think about it.
     public boolean checkout(String title) {
         Book book = getBook(title);
         if (book != null && !checkedOut.contains(book)) {
@@ -44,11 +46,11 @@ public class Library {
             return false;
     }
 
-    private Book getBook(String title) {
+    public Book getBook(String title) { // TODO - its private, so its still okay....
         for (Book book : booksAvailable) {
-            if (book.getByName(title))
+            if (book.hasSameName(title))
                 return book;
         }
-        return null;
+        return null; // TODO - don't return nulls? so what's the problem with nulls?
     }
 }

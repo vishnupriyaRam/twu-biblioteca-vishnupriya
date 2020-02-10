@@ -17,7 +17,7 @@ class BookTest {
     void shouldTestIfTwoBooksAreSame() {
         Book book1 = new Book("Harry Potter", "Rowling JK", "2001");
 
-        assertTrue(book1.getByName("Harry Potter"));
+        assertTrue(book1.hasSameName("Harry Potter"));
     }
 
 }

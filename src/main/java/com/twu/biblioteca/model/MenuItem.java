@@ -4,7 +4,8 @@ public enum MenuItem {
     LIST_BOOKS("List available Books"),
     CHECKOUT("Checkout a book"),
     RETURN("Return a book"),
-    QUIT("Quit");
+    QUIT("Quit"),
+    INVALID("");
 
     private String menuItem;
 

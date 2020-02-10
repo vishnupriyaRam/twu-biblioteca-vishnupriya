@@ -16,7 +16,7 @@ public class Book {
         return title + delimiter + author + delimiter + year;
     }
 
-    public boolean getByName(String title) {
+    public boolean hasSameName(String title) {
         return this.title.equals(title);
     }
 }

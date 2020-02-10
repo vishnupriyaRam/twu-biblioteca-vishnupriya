@@ -18,10 +18,10 @@ public class Input {
 
     public void getInput() {
         Scanner in = new Scanner(System.in);
-        menu.viewMenu();
+        System.out.println(menu.viewMenu());
         String userOption = getMenu(in);
         int option = Integer.parseInt(userOption);
-        MenuItem userChoice = MenuItem.values()[option - 1];
+        MenuItem userChoice = MenuItem.values()[Math.min((option - 1), 4)];
 
         switch (userChoice) {
             case LIST_BOOKS:
