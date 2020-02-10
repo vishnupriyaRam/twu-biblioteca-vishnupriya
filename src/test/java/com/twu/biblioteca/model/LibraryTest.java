@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,7 +24,11 @@ class LibraryTest {
         outContent = new ByteArrayOutputStream();
         originalOut = System.out;
         System.setOut(new PrintStream(outContent));
-        library = new Library();
+        List<Book> books = new ArrayList<>();
+        books.add(new Book("Harry Potter", "Rowling JK", "2001"));
+        books.add(new Book("The Fault in our stars", "Green John", "2012"));
+        books.add(new Book("A song of ice and fire", "Martin RR George", "1996"));
+        library = new Library(books);
     }
 
     @AfterEach
@@ -44,7 +50,6 @@ class LibraryTest {
 
     @Test
     void shouldTestIfACustomerIsAbleToCheckoutABook() { // TODO - naming like a spec
-        Library library = new Library();
         String expected = "Thank you! Enjoy the book\n" + "\n" +
                 "The Fault in our stars | Green John | 2012\n" +
                 "A song of ice and fire | Martin RR George | 1996";
@@ -57,7 +62,6 @@ class LibraryTest {
 
     @Test
     void shouldTestIfTheUserIsNotifiedOnSuccessfulCheckout() {
-        Library library = new Library();
         String expected = "Thank you! Enjoy the book";
 
         library.checkout("Harry Potter"); // TODO - you could probably use nesting to differentiate the scenarios?
@@ -67,7 +71,6 @@ class LibraryTest {
 
     @Test
     void shouldTestIfTheUserIsNotifiedWhenTheRequestedBookIsNotAvailable() {
-        Library library = new Library();
         String expected = "Sorry, that book is not available";
 
         library.checkout("Shawshank Redemption");
@@ -77,7 +80,6 @@ class LibraryTest {
 
     @Test
     void shouldTestIfTheCustomerIsAbleToReturnTheBook() {
-        Library library = new Library();
 
         String expected = "Thank you! Enjoy the book\n" + "\n" + "\n" +
                 "Thank you for returning the book\n" + "\n" +
@@ -94,7 +96,6 @@ class LibraryTest {
 
     @Test
     void shouldTestIfTheUserIsNotifiedOnSuccessfulReturn() {
-        Library library = new Library();
         String expected = "Thank you! Enjoy the book\n" + "\n" + "\n" + "Thank you for returning the book";
 
         library.checkout("Harry Potter");
@@ -105,7 +106,6 @@ class LibraryTest {
 
     @Test
     void shouldTestIfTheUserIsNotifiedOnUnsuccessfulReturnOfTheBook() {
-        Library library = new Library();
         String expected = "That is not a valid book to return.";
 
         library.returnBook("2 States");
