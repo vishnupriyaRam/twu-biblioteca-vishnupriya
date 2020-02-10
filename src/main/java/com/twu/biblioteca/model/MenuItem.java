@@ -3,6 +3,7 @@ package com.twu.biblioteca.model;
 import java.util.Scanner;
 
 public enum MenuItem implements MenuController {
+
     LIST_BOOKS("List available Books") {
         @Override
         public void performOperation(Library library) {

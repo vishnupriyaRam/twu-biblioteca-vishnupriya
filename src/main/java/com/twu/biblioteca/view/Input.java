@@ -4,21 +4,26 @@ import com.twu.biblioteca.model.Library;
 import com.twu.biblioteca.model.Menu;
 import com.twu.biblioteca.model.MenuItem;
 
+import java.io.PrintStream;
 import java.util.Scanner;
 
 // TODO - list down responsibilities of the INPUT class.
 public class Input {
     Library library;
     Menu menu;
+    Output output;
 
     public Input(Library library, Menu menu) {
         this.library = library;
         this.menu = menu;
+        this.output = new Output(library, menu, System.out);
     }
 
     public void getInput() {
         Scanner in = new Scanner(System.in);
-        System.out.println(menu.getMenu());
+
+        output.show(menu.getMenu());
+
         String userOption = getMenu(in);
         int option = Integer.parseInt(userOption);
         MenuItem userChoice = MenuItem.values()[Math.min((option - 1), 4)];
@@ -27,7 +32,7 @@ public class Input {
     }
 
     private String getMenu(Scanner scanner) {
-        System.out.println("Choose an option: ");
+        output.show("Choose an option: ");
         return scanner.nextLine();
     }
 }
