@@ -1,14 +1,17 @@
 package com.twu.biblioteca;
 
 public class BibliotecaApp {
+    Library library;
+    Menu menu;
 
-    public static void main(String[] args) {
-        new BibliotecaApp().startApp();
+    final String welcomeMessage = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!\n";
+
+    public BibliotecaApp(Library library, Menu menu) {
+        this.library = library;
+        this.menu = menu;
     }
 
     public void startApp() {
-        Library library = new Library();
-        Menu menu = new Menu();
         displayWelcomeMessage();
 
         Input input = new Input(library, menu);
@@ -17,7 +20,10 @@ public class BibliotecaApp {
     }
 
     public void displayWelcomeMessage() {
-        String welcomeMessage = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!\n";
         System.out.println(welcomeMessage);
+    }
+
+    public static void main(String[] args) {
+        new BibliotecaApp(new Library(), new Menu()).startApp();
     }
 }

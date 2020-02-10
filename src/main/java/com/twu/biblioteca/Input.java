@@ -50,7 +50,5 @@ public class Input {
     private String getBook(Scanner scanner, String message) {
         System.out.println(message);
         return scanner.nextLine();
-
-
     }
 }
