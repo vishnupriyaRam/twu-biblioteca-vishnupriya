@@ -13,7 +13,6 @@ public class Input {
     public Input(Library library, Menu menu) {
         this.library = library;
         this.menu = menu;
-
     }
 
     public void getInput() {
@@ -21,6 +20,7 @@ public class Input {
         menu.viewMenu();
         String userOption = getMenu(in);
         int option = Integer.parseInt(userOption);
+
 
         switch (option) {
             case 1:
