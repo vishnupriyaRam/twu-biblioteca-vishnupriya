@@ -1,11 +1,36 @@
 package com.twu.biblioteca.model;
 
-public enum MenuItem {
-    LIST_BOOKS("List available Books"),
-    CHECKOUT("Checkout a book"),
-    RETURN("Return a book"),
-    QUIT("Quit"),
-    INVALID("");
+public enum MenuItem implements MenuController {
+    LIST_BOOKS("List available Books"){
+        @Override
+        public void performOperation(Library library) {
+
+        }
+    },
+    CHECKOUT("Checkout a book"){
+        @Override
+        public void performOperation(Library library) {
+
+        }
+    },
+    RETURN("Return a book"){
+        @Override
+        public void performOperation(Library library) {
+
+        }
+    },
+    QUIT("Quit"){
+        @Override
+        public void performOperation(Library library) {
+
+        }
+    },
+    INVALID(""){
+        @Override
+        public void performOperation(Library library) {
+
+        }
+    };
 
     private String menuItem;
 
@@ -21,5 +46,6 @@ public enum MenuItem {
     public String viewItem() {
         return menuItem;
     }
+
 
 }
