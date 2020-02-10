@@ -49,7 +49,7 @@ class LibraryTest {
                 "The Fault in our stars | Green John | 2012\n" +
                 "A song of ice and fire | Martin RR George | 1996";
 
-        library.checkOut("Harry Potter");
+        library.checkout("Harry Potter");
         library.view();
 
         assertEquals(expected, outContent.toString().trim());
@@ -60,7 +60,7 @@ class LibraryTest {
         Library library = new Library();
         String expected = "Thank you! Enjoy the book";
 
-        library.checkOut("Harry Potter");
+        library.checkout("Harry Potter");
 
         assertEquals(expected, outContent.toString().trim());
     }
@@ -70,7 +70,7 @@ class LibraryTest {
         Library library = new Library();
         String expected = "Sorry, that book is not available";
 
-        library.checkOut("Shawshank Redemption");
+        library.checkout("Shawshank Redemption");
 
         assertEquals(expected, outContent.toString().trim());
     }
@@ -84,7 +84,7 @@ class LibraryTest {
                 "Harry Potter | Rowling JK | 2001\n" +
                 "The Fault in our stars | Green John | 2012\n" +
                 "A song of ice and fire | Martin RR George | 1996";
-        library.checkOut("Harry Potter");
+        library.checkout("Harry Potter");
 
         library.returnBook("Harry Potter");
         library.view();
@@ -97,7 +97,7 @@ class LibraryTest {
         Library library = new Library();
         String expected = "Thank you! Enjoy the book\n" + "\n" + "\n" + "Thank you for returning the book";
 
-        library.checkOut("Harry Potter");
+        library.checkout("Harry Potter");
         library.returnBook("Harry Potter");
 
         assertEquals(expected, outContent.toString().trim());

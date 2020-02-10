@@ -58,7 +58,7 @@ public class Input {
 
     private void checkout(Scanner in) {
         String bookToBeCheckedOut = getBook(in, "Enter book to checkout: ");
-        library.checkOut(bookToBeCheckedOut);
+        library.checkout(bookToBeCheckedOut);
     }
 
     private void returnBook(Scanner in) {

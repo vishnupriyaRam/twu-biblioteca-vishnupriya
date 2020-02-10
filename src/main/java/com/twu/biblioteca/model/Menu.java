@@ -11,15 +11,15 @@ public class Menu {
         createMenu();
     }
 
+    public void viewMenu() {
+        menuItems.forEach(MenuItem::viewItem);
+    }
+
     private void createMenu() {
         menuItems.add(MenuItem.LIST_BOOKS);
         menuItems.add(MenuItem.CHECKOUT);
         menuItems.add(MenuItem.RETURN);
         menuItems.add(MenuItem.QUIT);
 
-    }
-
-    public void viewMenu() {
-        menuItems.forEach(MenuItem::viewItem);
     }
 }
