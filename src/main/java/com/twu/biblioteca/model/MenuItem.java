@@ -1,5 +1,7 @@
 package com.twu.biblioteca.model;
 
+import java.util.Scanner;
+
 public enum MenuItem implements MenuController {
     LIST_BOOKS("List available Books") {
         @Override
@@ -10,17 +12,15 @@ public enum MenuItem implements MenuController {
     CHECKOUT("Checkout a book") {
         @Override
         public void performOperation(Library library) {
-//            String bookToBeCheckedOut = getBook(in, "Enter book to checkout: ");
-//        System.out.println(library.checkout(bookToBeCheckedOut).getMessage());
-//            System.out.println(library.checkout(bookToBeCheckedOut));
+            String bookToBeCheckedOut = getBook(in, "Enter book to checkout: ");
+            System.out.println(library.checkout(bookToBeCheckedOut));
         }
     },
     RETURN("Return a book") {
         @Override
         public void performOperation(Library library) {
-//            String bookToBeReturned = getBook(in, "Enter book to be returned: ");
-//        System.out.println(library.returnBook(bookToBeReturned).getMessage());
-//            System.out.println(library.returnBook(bookToBeReturned));
+            String bookToBeReturned = getBook(in, "Enter book to be returned: ");
+            System.out.println(library.returnBook(bookToBeReturned));
         }
     },
     QUIT("Quit") {
@@ -38,6 +38,7 @@ public enum MenuItem implements MenuController {
     };
 
     private String menuItem;
+    Scanner in = new Scanner(System.in);
 
     MenuItem(String menuItem) {
         this.menuItem = menuItem;
@@ -52,5 +53,8 @@ public enum MenuItem implements MenuController {
         return menuItem;
     }
 
-
+    private static String getBook(Scanner scanner, String message) {
+        System.out.println(message);
+        return scanner.nextLine();
+    }
 }

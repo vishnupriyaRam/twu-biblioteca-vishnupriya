@@ -30,9 +30,4 @@ public class Input {
         System.out.println("Choose an option: ");
         return scanner.nextLine();
     }
-
-    private String getBook(Scanner scanner, String message) {
-        System.out.println(message);
-        return scanner.nextLine();
-    }
 }

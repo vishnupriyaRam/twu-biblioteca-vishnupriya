@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
 
-//Todo Menu items not getting displayed in app
-//Todo override these methods to perform the respective operations
-
 public class Menu {
     List<MenuItem> menuItems;
 
