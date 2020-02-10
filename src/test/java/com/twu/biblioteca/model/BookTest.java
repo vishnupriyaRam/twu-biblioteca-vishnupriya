@@ -1,4 +1,4 @@
-package com.twu.biblioteca; // TODO - model package is missing
+package com.twu.biblioteca.model; // TODO - model package is missing
 
 import com.twu.biblioteca.model.Book;
 import org.junit.jupiter.api.AfterEach;
