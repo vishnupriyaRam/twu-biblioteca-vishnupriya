@@ -3,7 +3,6 @@ package com.twu.biblioteca.view;
 import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.model.Library;
 import com.twu.biblioteca.model.Menu;
-import com.twu.biblioteca.view.Input;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -32,10 +31,12 @@ class InputTest {
         outContent = new ByteArrayOutputStream();
         originalOut = System.out;
         System.setOut(new PrintStream(outContent));
+
         List<Book> books = new ArrayList<>();
         books.add(new Book("Harry Potter", "Rowling JK", "2001"));
         books.add(new Book("The Fault in our stars", "Green John", "2012"));
         books.add(new Book("A song of ice and fire", "Martin RR George", "1996"));
+
         library = new Library(books);
         menu = new Menu();
     }

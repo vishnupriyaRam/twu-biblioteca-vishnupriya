@@ -37,16 +37,8 @@ class BookTest { // TODO - can these tests execute in parallel? - Why would I wa
     @Test
     void shouldTestIfTwoBooksAreSame() {
         Book book1 = new Book("Harry Potter", "Rowling JK", "2001");
-        Book book2 = new Book("Harry Potter", "Rowling JK", "2001");
 
-        assertEquals(book1, book2);
+        assertTrue(book1.getByName("Harry Potter"));
     }
 
-    @Test
-    void shouldTestIfTheBookIsSameAsAnotherBookWithSameTitle() {
-        Book book1 = new Book("Harry Potter", "Rowling JK", "2001");
-        Book book2 = new Book("Harry Potter");
-
-        assertEquals(book1, book2);
-    }
 }

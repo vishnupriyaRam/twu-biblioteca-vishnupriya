@@ -37,9 +37,8 @@ public class Library {
     }
 
     private Book getBook(String title) {
-        Book bookNeeded = new Book(title);
         for (Book book : booksAvailable) {
-            if (book.equals(bookNeeded))
+            if (book.getByName(title))
                 return book;
         }
         return null;
