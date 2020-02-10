@@ -30,7 +30,7 @@ public class Book {
 //        }
 //    }
 
-    public void viewBookInfo() { // TODO - why is the word, Book here?
+    public void view() { // TODO - why is the word, Book here?
         System.out.println(title + " | " + author + " | " + year); // TODO - " | " is a magic literal. Changing the delimiter right now will be difficult.
     }
 

@@ -1,6 +1,5 @@
 package com.twu.biblioteca.model; // TODO - model package is missing
 
-import com.twu.biblioteca.model.Book;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -30,7 +29,7 @@ class BookTest { // TODO - can these tests execute in parallel? - Why would I wa
     void shouldReturnTheListOfBooksAvailable() {
         Book book = new Book("Harry Potter", "Rowling JK", "2001");
         String expected = "Harry Potter | Rowling JK | 2001"; // TODO - isn't the expected wrong in this case? - Incorrect spec.
-        book.viewBookInfo();
+        book.view();
 
         assertEquals(expected, outContent.toString().trim()); // TODO - why trim? But you can't change the actual? - That will hide potential bugs
     }

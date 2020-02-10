@@ -14,7 +14,7 @@ public class Library {
     public void view() {
         booksAvailable.forEach(book -> {
             if (!checkedOut.contains(book))
-                book.viewBookInfo();
+                book.view();
         });
     }
 
