@@ -1,6 +1,5 @@
 package com.twu.biblioteca.controller;
 
-import com.twu.biblioteca.controller.BibliotecaApp;
 import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.model.Library;
 import com.twu.biblioteca.model.Menu;
