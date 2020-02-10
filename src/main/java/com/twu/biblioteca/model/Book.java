@@ -1,8 +1,5 @@
 package com.twu.biblioteca.model;
 
-import javax.naming.OperationNotSupportedException;
-import java.util.Objects;
-
 public class Book {
     public final String title;
     public final String author;
@@ -14,9 +11,9 @@ public class Book {
         this.year = year;
     }
 
-    public void view() {
+    public String view() {
         String delimiter = " | ";
-        System.out.println(title + delimiter + author + delimiter + year);
+        return title + delimiter + author + delimiter + year;
     }
 
     public boolean getByName(String title) {

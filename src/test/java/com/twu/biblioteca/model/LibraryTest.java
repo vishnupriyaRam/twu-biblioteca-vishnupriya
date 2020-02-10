@@ -43,21 +43,20 @@ class LibraryTest {
         String thirdBook = "A song of ice and fire | Martin RR George | 1996";
         String expected = firstBook + secondBook + thirdBook;
 
-        library.view();
 
-        assertEquals(expected, outContent.toString().trim());
+
+        assertEquals(expected, library.view());
     }
 
     @Test
     void shouldTestIfACheckedOutBookIsNotViewableInTheListOfAvailableBooks() {
-        String expected = "Thank you! Enjoy the book\n" + "\n" +
-                "The Fault in our stars | Green John | 2012\n" +
+        String expected = "The Fault in our stars | Green John | 2012\n" +
                 "A song of ice and fire | Martin RR George | 1996";
 
         library.checkout("Harry Potter");
-        library.view();
 
-        assertEquals(expected, outContent.toString().trim());
+
+        assertEquals(expected, library.view());
     }
 
     @Test
@@ -79,19 +78,16 @@ class LibraryTest {
     }
 
     @Test
-    void shouldTestIfTheCustomerIsAbleToReturnTheBook() {
+    void shouldTestIfTheReturnedBookAppearsInTheListOfAvailableBooks() {
 
-        String expected = "Thank you! Enjoy the book\n" + "\n" + "\n" +
-                "Thank you for returning the book\n" + "\n" +
-                "Harry Potter | Rowling JK | 2001\n" +
+        String expected = "Harry Potter | Rowling JK | 2001\n" +
                 "The Fault in our stars | Green John | 2012\n" +
                 "A song of ice and fire | Martin RR George | 1996";
         library.checkout("Harry Potter");
 
         library.returnBook("Harry Potter");
-        library.view();
 
-        assertEquals(expected, outContent.toString().trim());
+        assertEquals(expected, library.view());
     }
 
     @Test

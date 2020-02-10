@@ -2,6 +2,7 @@ package com.twu.biblioteca.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringJoiner;
 
 public class Library {
     private List<Book> booksAvailable;
@@ -11,14 +12,18 @@ public class Library {
         this.booksAvailable = booksAvailable;
     }
 
-    public void view() {
+    public String view() {
+        StringJoiner list = new StringJoiner("\n");
+
         booksAvailable.forEach(book -> {
-            if (!checkedOut.contains(book))
-                book.view();
+            if (!checkedOut.contains(book)) {
+                list.add(book.view());
+            }
         });
+        return list.toString();
     }
 
-    public void checkout(String title) {
+    public NotificationMessages checkout(String title) {
         Book book = getBook(title);
         if (book != null) {
             checkedOut.add(book);
