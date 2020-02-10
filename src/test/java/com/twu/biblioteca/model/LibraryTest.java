@@ -85,4 +85,11 @@ class LibraryTest {
 //        assertEquals(expected, library.returnBook("2 States").getMessage());
         assertFalse(library.checkout("Shawshank Redemption"));
     }
+
+    @Test
+    void shouldTestIfACheckedOutBookCannotBeCheckedOutAgain() {
+        library.checkout("Harry Potter");
+
+        assertFalse(library.checkout("Harry Potter"));
+    }
 }

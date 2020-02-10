@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
 
+
+//todo checkout and return displays boolean. message not getting displayed
+
 public class Library {
     private List<Book> booksAvailable;
     private List<Book> checkedOut = new ArrayList<>();
@@ -25,7 +28,7 @@ public class Library {
 
     public boolean checkout(String title) {
         Book book = getBook(title);
-        if (book != null) {
+        if (book != null && !checkedOut.contains(book)) {
             checkedOut.add(book);
             return true;
         } else
