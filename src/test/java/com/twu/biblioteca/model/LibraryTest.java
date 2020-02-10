@@ -42,16 +42,18 @@ class LibraryTest {
 
     @Test
     void shouldTestIfTheUserIsNotifiedOnSuccessfulCheckout() {
-        String expected = "Thank you! Enjoy the book";
+//        String expected = "Thank you! Enjoy the book";
 
-        assertEquals(expected, library.checkout("Harry Potter").getMessage());
+//        assertEquals(expected, library.checkout("Harry Potter").getMessage());
+        assertTrue(library.checkout("Harry Potter"));
     }
 
     @Test
     void shouldTestIfTheUserIsNotifiedWhenTheRequestedBookIsNotAvailable() {
-        String expected = "Sorry, that book is not available";
+//        String expected = "Sorry, that book is not available";
 
-        assertEquals(expected, library.checkout("Shawshank Redemption").getMessage());
+//        assertEquals(expected, library.checkout("Shawshank Redemption").getMessage());
+        assertFalse(library.checkout("Shawshank Redemption"));
     }
 
     @Test
@@ -68,17 +70,19 @@ class LibraryTest {
 
     @Test
     void shouldTestIfTheUserIsNotifiedOnSuccessfulReturn() {
-        String expected = "Thank you for returning the book";
+//        String expected = "Thank you for returning the book";
 
         library.checkout("Harry Potter");
 
-        assertEquals(expected, library.returnBook("Harry Potter").getMessage());
+//        assertEquals(expected, library.returnBook("Harry Potter").getMessage());
+        assertTrue(library.returnBook("Harry Potter"));
     }
 
     @Test
     void shouldTestIfTheUserIsNotifiedOnUnsuccessfulReturnOfTheBook() {
-        String expected = "That is not a valid book to return.";
+//        String expected = "That is not a valid book to return.";
 
-        assertEquals(expected, library.returnBook("2 States").getMessage());
+//        assertEquals(expected, library.returnBook("2 States").getMessage());
+        assertFalse(library.checkout("Shawshank Redemption"));
     }
 }

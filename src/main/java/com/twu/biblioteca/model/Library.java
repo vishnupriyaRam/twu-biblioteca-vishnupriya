@@ -23,22 +23,22 @@ public class Library {
         return list.toString();
     }
 
-    public NotificationMessages checkout(String title) {
+    public boolean checkout(String title) {
         Book book = getBook(title);
         if (book != null) {
             checkedOut.add(book);
-            return NotificationMessages.CHECKOUT_SUCCESS;
+            return true;
         } else
-            return NotificationMessages.CHECKOUT_FAILURE;
+            return false;
     }
 
-    public NotificationMessages returnBook(String title) {
+    public boolean returnBook(String title) {
         Book book = getBook(title);
         if (checkedOut.contains(book)) {
             checkedOut.remove(book);
-            return NotificationMessages.RETURN_SUCCESS;
+            return true;
         } else
-            return NotificationMessages.RETURN_FAILURE;
+            return false;
     }
 
     private Book getBook(String title) {

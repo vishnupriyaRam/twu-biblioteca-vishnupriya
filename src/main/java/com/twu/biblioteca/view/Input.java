@@ -58,12 +58,14 @@ public class Input {
 
     private void checkout(Scanner in) {
         String bookToBeCheckedOut = getBook(in, "Enter book to checkout: ");
-        System.out.println(library.checkout(bookToBeCheckedOut).getMessage());
+//        System.out.println(library.checkout(bookToBeCheckedOut).getMessage());
+        System.out.println(library.checkout(bookToBeCheckedOut));
     }
 
     private void returnBook(Scanner in) {
         String bookToBeReturned = getBook(in, "Enter book to be returned: ");
-        System.out.println(library.returnBook(bookToBeReturned).getMessage());
+//        System.out.println(library.returnBook(bookToBeReturned).getMessage());
+        System.out.println(library.returnBook(bookToBeReturned));
     }
 
     private void quit() {
