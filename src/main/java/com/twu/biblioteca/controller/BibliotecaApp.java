@@ -1,10 +1,7 @@
 package com.twu.biblioteca.controller;
 
-import com.twu.biblioteca.model.Book;
-import com.twu.biblioteca.model.MenuItem;
+import com.twu.biblioteca.model.*;
 import com.twu.biblioteca.view.Input;
-import com.twu.biblioteca.model.Library;
-import com.twu.biblioteca.model.Menu;
 import com.twu.biblioteca.view.Output;
 
 import java.util.ArrayList;
@@ -42,7 +39,12 @@ public class BibliotecaApp {
         books.add(new Book("The Fault in our stars", "Green John", "2012"));
         books.add(new Book("A song of ice and fire", "Martin RR George", "1996"));
 
-        new BibliotecaApp(new Library(books), new Menu()).startApp();
+        List<Movie> movies = new ArrayList<>();
+        movies.add(new Movie("Forrest Gump", "1994", "Robert Zemeckis", "8.8"));
+        movies.add(new Movie("Seven", "1995", "David Fincher", "8.6"));
+        movies.add(new Movie("The Shawshank Redemption", "1994", "Frank Darabont", "9.3"));
+
+        new BibliotecaApp(new Library(books, movies), new Menu()).startApp();
     }
 
     private void parseInput() {

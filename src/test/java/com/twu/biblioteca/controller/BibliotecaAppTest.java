@@ -3,6 +3,7 @@ package com.twu.biblioteca.controller;
 import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.model.Library;
 import com.twu.biblioteca.model.Menu;
+import com.twu.biblioteca.model.Movie;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -32,7 +33,13 @@ class BibliotecaAppTest {
         books.add(new Book("Harry Potter", "Rowling JK", "2001"));
         books.add(new Book("The Fault in our stars", "Green John", "2012"));
         books.add(new Book("A song of ice and fire", "Martin RR George", "1996"));
-        bibliotecaApp = new BibliotecaApp(new Library(books), new Menu());
+
+        List<Movie> movies = new ArrayList<>();
+        movies.add(new Movie("Forrest Gump", "1994", "Robert Zemeckis", "8.8"));
+        movies.add(new Movie("Seven", "1995", "David Fincher", "8.6"));
+        movies.add(new Movie("The Shawshank Redemption", "1994", "Frank Darabont", "9.3"));
+
+        bibliotecaApp = new BibliotecaApp(new Library(books, movies), new Menu());
     }
 
     @AfterEach

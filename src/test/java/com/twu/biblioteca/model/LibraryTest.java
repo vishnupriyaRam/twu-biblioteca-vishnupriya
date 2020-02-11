@@ -18,7 +18,13 @@ class LibraryTest {
         books.add(new Book("Harry Potter", "Rowling JK", "2001"));
         books.add(new Book("The Fault in our stars", "Green John", "2012"));
         books.add(new Book("A song of ice and fire", "Martin RR George", "1996"));
-        library = new Library(books);
+
+        List<Movie> movies = new ArrayList<>();
+        movies.add(new Movie("Forrest Gump", "1994", "Robert Zemeckis", "8.8"));
+        movies.add(new Movie("Seven", "1995", "David Fincher", "8.6"));
+        movies.add(new Movie("The Shawshank Redemption", "1994", "Frank Darabont", "9.3"));
+
+        library = new Library(books, movies);
     }
 
     @Test
@@ -27,7 +33,7 @@ class LibraryTest {
                 "The Fault in our stars | Green John | 2012\n" +
                 "A song of ice and fire | Martin RR George | 1996";
 
-        assertEquals(expected, library.view());
+        assertEquals(expected, library.viewBooks());
     }
 
     @Test
@@ -37,7 +43,7 @@ class LibraryTest {
 
         library.checkout("Harry Potter");
 
-        assertEquals(expected, library.view());
+        assertEquals(expected, library.viewBooks());
     }
 
     @Test
@@ -65,7 +71,7 @@ class LibraryTest {
 
         library.returnBook("Harry Potter");
 
-        assertEquals(expected, library.view());
+        assertEquals(expected, library.viewBooks());
     }
 
     @Test
@@ -91,5 +97,14 @@ class LibraryTest {
         library.checkout("Harry Potter");
 
         assertFalse(library.checkout("Harry Potter"));
+    }
+
+    @Test
+    void shouldTestIfTheMovieListIsDisplayed() {
+        String expected = "Forrest Gump | 1994 | Robert Zemeckis | 8.8\n" +
+                "Seven | 1995 | David Fincher | 8.6\n" +
+                "The Shawshank Redemption | 1994 | Frank Darabont | 9.3";
+
+        assertEquals(expected, library.viewMovies());
     }
 }

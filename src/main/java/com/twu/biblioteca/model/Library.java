@@ -7,13 +7,16 @@ import java.util.StringJoiner;
 
 public class Library {
     private List<Book> booksAvailable;
+    private List<Movie> moviesAvailable;
     private List<Book> checkedOut = new ArrayList<>();
 
-    public Library(List<Book> booksAvailable) {
+
+    public Library(List<Book> booksAvailable, List<Movie> moviesAvailable) {
         this.booksAvailable = booksAvailable;
+        this.moviesAvailable = moviesAvailable;
     }
 
-    public String view() {
+    public String viewBooks() {
         StringJoiner list = new StringJoiner("\n");
 
         booksAvailable.forEach(book -> {
@@ -50,5 +53,14 @@ public class Library {
                 return book;
         }
         return null; // TODO - don't return nulls? so what's the problem with nulls?
+    }
+
+    public String viewMovies() {
+        StringJoiner list = new StringJoiner("\n");
+
+        moviesAvailable.forEach(book ->
+                list.add(book.getDetails())
+        );
+        return list.toString();
     }
 }

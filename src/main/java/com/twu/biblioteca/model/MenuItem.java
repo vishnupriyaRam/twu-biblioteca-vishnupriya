@@ -8,7 +8,7 @@ public enum MenuItem implements MenuOperator {
     LIST_BOOKS("List available Books") {
         @Override
         public void performOperation(Library library) {
-            output.show(library.view());
+            output.show(library.viewBooks());
         }
     },
     CHECKOUT("Checkout a book") {
