@@ -117,4 +117,9 @@ class LibraryTest {
 
         assertEquals(expected, library.viewMovies());
     }
+
+    @Test
+    void shouldTestIfTheUserIsNotifiedOnSuccessfulCheckoutOfAMovie() {
+        assertTrue(library.checkoutMovies("Seven"));
+    }
 }
