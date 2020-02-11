@@ -28,4 +28,11 @@ public class Output {
         else
             out.println(NotificationMessages.RETURN_FAILURE.getMessage());
     }
+
+    public void showCheckoutMovie(boolean status) {
+        if(status)
+            out.println(NotificationMessages.CHECKOUT_SUCCESS_MOVIE.getMessage());
+        else
+            out.println(NotificationMessages.CHECKOUT_FAILURE_MOVIE.getMessage());
+    }
 }

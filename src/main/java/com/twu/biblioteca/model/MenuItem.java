@@ -17,12 +17,21 @@ public enum MenuItem implements MenuOperator {
             output.show(library.viewMovies());
         }
     },
-    CHECKOUT("Checkout a book") {
+    CHECKOUT_BOOK("Checkout a book") {
         @Override
         public void performOperation(Library library) {
             output.show("Enter book to checkout: ");
             String bookToBeCheckedOut = input.readLine();
             output.showCheckout(library.checkout(bookToBeCheckedOut));
+        }
+    },
+
+    CHECKOUT_MOVIE("Checkout a movie") {
+        @Override
+        public void performOperation(Library library) {
+            output.show("Enter movie to checkout");
+            String movieToBeCheckedOut = input.readLine();
+            output.showCheckoutMovie(library.checkoutMovies(movieToBeCheckedOut));
         }
     },
     RETURN("Return a book") {
