@@ -122,4 +122,9 @@ class LibraryTest {
     void shouldTestIfTheUserIsNotifiedOnSuccessfulCheckoutOfAMovie() {
         assertTrue(library.checkoutMovies("Seven"));
     }
+
+    @Test
+    void shouldTestIfTheUserIsNotifiedWhenTheRequestedMovieIsNotAvailable() {
+        assertFalse(library.checkoutMovies("Harry Potter"));
+    }
 }

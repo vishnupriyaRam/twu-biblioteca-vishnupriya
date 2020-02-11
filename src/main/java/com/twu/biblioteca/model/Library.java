@@ -44,8 +44,8 @@ public class Library {
         if (checkedOutBooks.contains(book)) {
             checkedOutBooks.remove(book);
             return true;
-        }
-        return false;
+        } else
+            return false;
     }
 
     public String viewMovies() {
@@ -63,10 +63,9 @@ public class Library {
         Movie movie = getMovie(title);
         if (movie != null && !checkedOutMovies.contains(movie)) {
             checkedOutMovies.add(movie);
-            System.out.println("Hereeee");
             return true;
-        }
-        return false;
+        } else
+            return false;
     }
 
     private Book getBook(String title) { // TODO - its private, so its still okay....
