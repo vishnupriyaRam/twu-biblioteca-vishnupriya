@@ -15,14 +15,14 @@ public class Output {
         out.println(message);
     }
 
-    public void showCheckout(boolean status) {
+    public void showCheckoutBook(boolean status) {
         if (status)
             out.println(NotificationMessages.CHECKOUT_SUCCESS.getMessage());
         else
             out.println(NotificationMessages.CHECKOUT_FAILURE.getMessage());
     }
 
-    public void showReturn(boolean status) {
+    public void showReturnBook(boolean status) {
         if (status)
             out.println(NotificationMessages.RETURN_SUCCESS.getMessage());
         else

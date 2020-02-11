@@ -41,7 +41,7 @@ class LibraryTest {
         String expected = "The Fault in our stars | Green John | 2012\n" +
                 "A song of ice and fire | Martin RR George | 1996";
 
-        library.checkout("Harry Potter");
+        library.checkoutBook("Harry Potter");
 
         assertEquals(expected, library.viewBooks());
     }
@@ -51,7 +51,7 @@ class LibraryTest {
 //        String expected = "Thank you! Enjoy the book";
 
 //        assertEquals(expected, library.checkout("Harry Potter").getMessage());
-        assertTrue(library.checkout("Harry Potter"));
+        assertTrue(library.checkoutBook("Harry Potter"));
     }
 
     @Test
@@ -59,7 +59,7 @@ class LibraryTest {
 //        String expected = "Sorry, that book is not available";
 
 //        assertEquals(expected, library.checkout("Shawshank Redemption").getMessage());
-        assertFalse(library.checkout("Shawshank Redemption"));
+        assertFalse(library.checkoutBook("Shawshank Redemption"));
     }
 
     @Test
@@ -67,7 +67,7 @@ class LibraryTest {
         String expected = "Harry Potter | Rowling JK | 2001\n" +
                 "The Fault in our stars | Green John | 2012\n" +
                 "A song of ice and fire | Martin RR George | 1996";
-        library.checkout("Harry Potter");
+        library.checkoutBook("Harry Potter");
 
         library.returnBook("Harry Potter");
 
@@ -78,7 +78,7 @@ class LibraryTest {
     void shouldTestIfTheUserIsNotifiedOnSuccessfulReturn() {
 //        String expected = "Thank you for returning the book";
 
-        library.checkout("Harry Potter");
+        library.checkoutBook("Harry Potter");
 
 //        assertEquals(expected, library.returnBook("Harry Potter").getMessage());
         assertTrue(library.returnBook("Harry Potter"));
@@ -89,14 +89,14 @@ class LibraryTest {
 //        String expected = "That is not a valid book to return.";
 
 //        assertEquals(expected, library.returnBook("2 States").getMessage());
-        assertFalse(library.checkout("Shawshank Redemption"));
+        assertFalse(library.checkoutBook("Shawshank Redemption"));
     }
 
     @Test
     void shouldTestIfACheckedOutBookCannotBeCheckedOutAgain() {
-        library.checkout("Harry Potter");
+        library.checkoutBook("Harry Potter");
 
-        assertFalse(library.checkout("Harry Potter"));
+        assertFalse(library.checkoutBook("Harry Potter"));
     }
 
     @Test

@@ -22,7 +22,7 @@ public enum MenuItem implements MenuOperator {
         public void performOperation(Library library) {
             output.show("Enter book to checkout: ");
             String bookToBeCheckedOut = input.readLine();
-            output.showCheckout(library.checkout(bookToBeCheckedOut));
+            output.showCheckoutBook(library.checkoutBook(bookToBeCheckedOut));
         }
     },
 
@@ -39,7 +39,7 @@ public enum MenuItem implements MenuOperator {
         public void performOperation(Library library) {
             output.show("Enter book to be returned: ");
             String bookToBeReturned = input.readLine();
-            output.showReturn(library.returnBook(bookToBeReturned));
+            output.showReturnBook(library.returnBook(bookToBeReturned));
         }
     },
     QUIT("Quit") {

@@ -30,7 +30,7 @@ public class Library {
 
     // TODO - what are different ways to not break CSQ here?
     // TODO - is this a valid usecase to break CQS? - Think about it.
-    public boolean checkout(String title) {
+    public boolean checkoutBook(String title) {
         Book book = getBook(title);
         if (book != null && !checkedOutBooks.contains(book)) {
             checkedOutBooks.add(book);
