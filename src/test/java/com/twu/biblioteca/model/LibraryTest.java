@@ -107,4 +107,14 @@ class LibraryTest {
 
         assertEquals(expected, library.viewMovies());
     }
+
+    @Test
+    void shouldTestIfTheCheckedOutMovieIsNotViewableInTheListOfAvailableMovies() {
+        String expected = "Forrest Gump | 1994 | Robert Zemeckis | 8.8\n" +
+                "The Shawshank Redemption | 1994 | Frank Darabont | 9.3";
+
+        library.checkoutMovies("Seven");
+
+        assertEquals(expected, library.viewMovies());
+    }
 }
