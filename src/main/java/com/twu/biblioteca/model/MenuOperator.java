@@ -1,5 +1,5 @@
 package com.twu.biblioteca.model;
 
-public interface MenuController {
+public interface MenuOperator {
     void performOperation(Library library);
 }

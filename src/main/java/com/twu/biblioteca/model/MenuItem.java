@@ -3,9 +3,7 @@ package com.twu.biblioteca.model;
 import com.twu.biblioteca.view.Input;
 import com.twu.biblioteca.view.Output;
 
-import java.util.Scanner;
-
-public enum MenuItem implements MenuController {
+public enum MenuItem implements MenuOperator {
 
     LIST_BOOKS("List available Books") {
         @Override
