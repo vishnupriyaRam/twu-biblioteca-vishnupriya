@@ -11,7 +11,6 @@ public enum MenuItem implements MenuOperator {
             output.show(library.viewBooks());
         }
     },
-
     LIST_MOVIES("List available Movies") {
         @Override
         public void performOperation(Library library) {

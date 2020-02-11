@@ -49,7 +49,7 @@ public class BibliotecaApp {
 
     private void parseInput() {
         int option = getOption();
-        MenuItem userChoice = MenuItem.values()[Math.min((option - 1), 4)];
+        MenuItem userChoice = MenuItem.values()[Math.min((option - 1), 5)];
         userChoice.performOperation(library);
     }
 
