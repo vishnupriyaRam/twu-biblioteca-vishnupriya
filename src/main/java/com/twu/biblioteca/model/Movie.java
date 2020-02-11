@@ -17,4 +17,8 @@ public class Movie {
         String separator = " | ";
         return title + separator + year + separator + director + separator + rating;
     }
+
+    public boolean hasSameName(String title) {
+        return this.title.equals(title);
+    }
 }

@@ -12,4 +12,11 @@ class MovieTest {
 
         assertEquals(expected, movie.getDetails());
     }
+
+    @Test
+    void shouldTestIfTheMovieCanBeFetchedUsingTheTitle() {
+        Movie movie = new Movie("Forrest Gump", "1994", "Robert Zemeckis", "8.8");
+
+        assertTrue(movie.hasSameName("Forrest Gump"));
+    }
 }
