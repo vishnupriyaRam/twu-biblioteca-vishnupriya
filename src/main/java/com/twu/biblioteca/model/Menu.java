@@ -22,6 +22,7 @@ public class Menu {
 
     private void createMenu() {
         menuItems.add(MenuItem.LIST_BOOKS);
+        menuItems.add(MenuItem.LIST_MOVIES);
         menuItems.add(MenuItem.CHECKOUT);
         menuItems.add(MenuItem.RETURN);
         menuItems.add(MenuItem.QUIT);

@@ -9,9 +9,10 @@ class MenuTest {
     void shouldReturnTheListOfMenuItems() {
         Menu menu = new Menu();
         String expected = "1. List available Books\n" +
-                "2. Checkout a book\n" +
-                "3. Return a book\n" +
-                "4. Quit";
+                "2. List available Movies\n" +
+                "3. Checkout a book\n" +
+                "4. Return a book\n" +
+                "5. Quit";
 
         assertEquals(expected, menu.getMenu());
     }
