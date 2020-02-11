@@ -32,17 +32,6 @@ public class BibliotecaApp {
         }
     }
 
-    private void parseInput(){
-        int option = getOption();
-        MenuItem userChoice = MenuItem.values()[Math.min((option - 1), 4)];
-        userChoice.performOperation(library);
-    }
-
-    private int getOption(){
-        output.show("Enter option: ");
-        return Integer.parseInt(input.readLine());
-    }
-
     public void displayWelcomeMessage() {
         output.show(welcomeMessage);
     }
@@ -54,5 +43,16 @@ public class BibliotecaApp {
         books.add(new Book("A song of ice and fire", "Martin RR George", "1996"));
 
         new BibliotecaApp(new Library(books), new Menu()).startApp();
+    }
+
+    private void parseInput() {
+        int option = getOption();
+        MenuItem userChoice = MenuItem.values()[Math.min((option - 1), 4)];
+        userChoice.performOperation(library);
+    }
+
+    private int getOption() {
+        output.show("Enter option: ");
+        return Integer.parseInt(input.readLine());
     }
 }

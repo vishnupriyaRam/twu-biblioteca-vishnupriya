@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.StringJoiner;
 
 
-//todo checkout and return displays boolean. message not getting displayed
-
 public class Library {
     private List<Book> booksAvailable;
     private List<Book> checkedOut = new ArrayList<>();
