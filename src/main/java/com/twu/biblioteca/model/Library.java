@@ -1,5 +1,6 @@
 package com.twu.biblioteca.model;
 
+import com.twu.biblioteca.exceptions.UserNotFoundException;
 import com.twu.biblioteca.exceptions.UserNotLoggedInException;
 
 import java.util.*;
@@ -123,5 +124,13 @@ public class Library {
                 return movie;
         }
         return null;
+    }
+
+    public User hasUser(String number, String password) throws UserNotFoundException {
+        for (User user: users) {
+            if(user.getLibraryNumber().equals(number) && user.getPassword().equals(password))
+                return user;
+        }
+        throw new UserNotFoundException();
     }
 }

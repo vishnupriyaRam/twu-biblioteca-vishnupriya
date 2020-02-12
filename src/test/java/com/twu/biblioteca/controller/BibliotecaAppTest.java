@@ -37,9 +37,9 @@ class BibliotecaAppTest {
         movies.add(new Movie("The Shawshank Redemption", "1994", "Frank Darabont", "9.3"));
 
         List<User> users = new ArrayList<>();
-        users.add(new User("123-4567", "password0"));
-        users.add(new User("123-4568", "password1"));
-        users.add(new User("123-4569", "password2"));
+        users.add(new User("123-4567", "password0", "Henry", "henry@gmail.com", "9898989898"));
+        users.add(new User("123-4568", "password1", "Harry", "harry@gmail.com", "8989898989"));
+        users.add(new User("123-4569", "password2", "Golding", "golding@gmail.com", "7878787878"));
         Library library = new Library(books, movies, users);
         bibliotecaApp = new BibliotecaApp(library, new Menu(library));
     }

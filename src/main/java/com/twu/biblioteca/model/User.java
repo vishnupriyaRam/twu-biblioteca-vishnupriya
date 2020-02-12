@@ -3,17 +3,29 @@ package com.twu.biblioteca.model;
 import java.util.Objects;
 
 public class User {
-    private String libraryNumber;
-    private String password;
+    private final String libraryNumber;
+    private final String password;
+    private final String name;
+    private final String email;
+    private final String phone;
 
-    public User(String libraryNumber, String password) {
+
+    public User(String libraryNumber, String password, String name, String email, String phone) {
         this.libraryNumber = libraryNumber;
         this.password = password;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
     }
 
     public String getLibraryNumber() {
         return libraryNumber;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
 
     @Override
     public boolean equals(Object o) {

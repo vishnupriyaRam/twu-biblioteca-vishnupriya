@@ -26,9 +26,9 @@ class LibraryTest {
         movies.add(new Movie("The Shawshank Redemption", "1994", "Frank Darabont", "9.3"));
 
         List<User> users = new ArrayList<>();
-        users.add(new User("123-4567", "password0"));
-        users.add(new User("123-4568", "password1"));
-        users.add(new User("123-4569", "password2"));
+        users.add(new User("123-4567", "password0", "Henry", "henry@gmail.com", "9898989898"));
+        users.add(new User("123-4568", "password1", "Harry", "harry@gmail.com", "8989898989"));
+        users.add(new User("123-4569", "password2", "Golding", "golding@gmail.com", "7878787878"));
         library = new Library(books, movies, users);
     }
 
@@ -43,7 +43,7 @@ class LibraryTest {
 
     @Test
     void shouldTestIfACheckedOutBookIsNotViewableInTheListOfAvailableBooks() throws UserNotLoggedInException {
-        User user = new User("123-4567", "password0");
+        User user = new User("123-4568", "password1", "Harry", "harry@gmail.com", "8989898989");
         library.login(user);
         String expected = "The Fault in our stars | Green John | 2012\n" +
                 "A song of ice and fire | Martin RR George | 1996";
@@ -55,21 +55,21 @@ class LibraryTest {
 
     @Test
     void shouldTestIfTheUserIsNotifiedOnSuccessfulCheckout() throws UserNotLoggedInException {
-        User user = new User("123-4567", "password0");
+        User user = new User("123-4568", "password1", "Harry", "harry@gmail.com", "8989898989");
         library.login(user);
         assertTrue(library.checkoutBook("Harry Potter"));
     }
 
     @Test
     void shouldTestIfTheUserIsNotifiedWhenTheRequestedBookIsNotAvailable() throws UserNotLoggedInException {
-        User user = new User("123-4567", "password0");
+        User user = new User("123-4568", "password1", "Harry", "harry@gmail.com", "8989898989");
         library.login(user);
         assertFalse(library.checkoutBook("Shawshank Redemption"));
     }
 
     @Test
     void shouldTestIfTheReturnedBookAppearsInTheListOfAvailableBooks() throws UserNotLoggedInException {
-        User user = new User("123-4567", "password0");
+        User user = new User("123-4568", "password1", "Harry", "harry@gmail.com", "8989898989");
         library.login(user);
         String expected = "Harry Potter | Rowling JK | 2001\n" +
                 "The Fault in our stars | Green John | 2012\n" +
@@ -83,7 +83,7 @@ class LibraryTest {
 
     @Test
     void shouldTestIfTheUserIsNotifiedOnSuccessfulReturn() throws UserNotLoggedInException {
-        User user = new User("123-4567", "password0");
+        User user = new User("123-4568", "password1", "Harry", "harry@gmail.com", "8989898989");
         library.login(user);
 
         library.checkoutBook("Harry Potter");
@@ -93,7 +93,7 @@ class LibraryTest {
 
     @Test
     void shouldTestIfTheUserIsNotifiedOnUnsuccessfulReturnOfTheBook() throws UserNotLoggedInException {
-        User user = new User("123-4567", "password0");
+        User user = new User("123-4568", "password1", "Harry", "harry@gmail.com", "8989898989");
         library.login(user);
 
         assertFalse(library.checkoutBook("Shawshank Redemption"));
@@ -101,7 +101,7 @@ class LibraryTest {
 
     @Test
     void shouldTestIfACheckedOutBookCannotBeCheckedOutAgain() throws UserNotLoggedInException {
-        User user = new User("123-4567", "password0");
+        User user = new User("123-4568", "password1", "Harry", "harry@gmail.com", "8989898989");
         library.login(user);
 
         library.checkoutBook("Harry Potter");
@@ -140,32 +140,32 @@ class LibraryTest {
 
     @Test
     void shouldTestIfTheUserCanLogin() {
-        User user = new User("123-4567", "password0");
+        User user = new User("123-4567", "password0", "Henry", "henry@gmail.com", "9898989898");
         assertTrue(library.login(user));
     }
 
     @Test
     void shouldTestIfTheUserCannotLoginIfTheUserIsNotAMember() {
-        User user = new User("145-4567", "password");
+        User user = new User("123-4567", "password", "Henry", "henry@gmail.com", "9898989898");
         assertFalse(library.login(user));
     }
 
     @Test
     void shouldTestIfTheUserIsAbleToLoginOnlyWithTheCorrectCredentials() {
-        User user = new User("123-4567", "password2121");
-        assertFalse(library.login(user));
+        User user = new User("123-4567", "password0", "Henry", "henry@gmail.com", "9898989898");
+        assertTrue(library.login(user));
     }
 
     @Test
     void shouldTestIfTheUserCanCheckoutTheBookOnlyAfterLoggingIn() throws UserNotLoggedInException {
-        User user = new User("123-4567", "password0");
+        User user = new User("123-4567", "password0", "Henry", "henry@gmail.com", "9898989898");
         library.login(user);
         assertTrue(library.checkoutBook("Harry Potter"));
     }
 
     @Test
     void shouldTestIfTheUserDetailsAreAddedWhenABookIsCheckedOut() throws UserNotLoggedInException {
-        User user = new User("123-4567", "password0");
+        User user = new User("123-4567", "password0", "Henry", "henry@gmail.com", "9898989898");
         library.login(user);
         library.checkoutBook("Harry Potter");
         String expected = "123-4567";
@@ -185,7 +185,7 @@ class LibraryTest {
 
     @Test
     void shouldTestIfUserIsAbleToViewCheckedOutBooks() throws UserNotLoggedInException {
-        User user = new User("123-4567", "password0");
+        User user = new User("123-4567", "password0", "Henry", "henry@gmail.com", "9898989898");
         library.login(user);
         library.checkoutBook("Harry Potter");
         String expected = "Harry Potter | Rowling JK | 2001";
@@ -195,10 +195,10 @@ class LibraryTest {
 
     @Test
     void shouldTestIfTheUserIsAbleToViewOnlyTheBooksCheckedOutByThem() throws UserNotLoggedInException {
-        User user = new User("123-4567", "password0");
+        User user = new User("123-4567", "password0", "Henry", "henry@gmail.com", "9898989898");
         library.login(user);
         library.checkoutBook("Harry Potter");
-        User user2 = new User("123-4568", "password1");
+        User user2 = new User("123-4568", "password1", "Harry", "harry@gmail.com", "8989898989");
         library.login(user2);
         library.checkoutBook("A song of ice and fire");
         String expected = "A song of ice and fire | Martin RR George | 1996";

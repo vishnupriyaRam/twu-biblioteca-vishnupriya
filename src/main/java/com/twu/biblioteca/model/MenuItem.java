@@ -1,5 +1,6 @@
 package com.twu.biblioteca.model;
 
+import com.twu.biblioteca.exceptions.UserNotFoundException;
 import com.twu.biblioteca.exceptions.UserNotLoggedInException;
 import com.twu.biblioteca.view.Input;
 import com.twu.biblioteca.view.Output;
@@ -19,17 +20,18 @@ public enum MenuItem implements MenuOperator {
     },
     CHECKOUT_BOOK("Checkout a book") {
         @Override
-        public void performOperation(Library library) throws UserNotLoggedInException {
+        public void performOperation(Library library) throws UserNotLoggedInException, UserNotFoundException {
             output.show("Enter book to checkout: ");
             String bookToBeCheckedOut = input.readLine();
             try {
                 output.showCheckoutBook(library.checkoutBook(bookToBeCheckedOut));
             } catch (UserNotLoggedInException e) {
                 output.show("User not logged in");
-                User user = attemptLogin();
-                if (library.login(user))
+                User user = attemptLogin(library);
+                if (user != null) {
+                    library.login(user);
                     output.showCheckoutBook(library.checkoutBook(bookToBeCheckedOut));
-                else output.show("Invalid credentials");
+                } else output.show("Invalid credentials");
             }
         }
     },
@@ -49,17 +51,18 @@ public enum MenuItem implements MenuOperator {
     },
     RETURN("Return a book") {
         @Override
-        public void performOperation(Library library) throws UserNotLoggedInException {
+        public void performOperation(Library library) throws UserNotLoggedInException, UserNotFoundException {
             output.show("Enter book to be returned: ");
             String bookToBeReturned = input.readLine();
             try {
                 output.showReturnBook(library.returnBook(bookToBeReturned));
             } catch (UserNotLoggedInException e) {
                 output.show("User not logged in");
-                User user = attemptLogin();
-                if (library.login(user))
+                User user = attemptLogin(library);
+                if (user != null) {
+                    library.login(user);
                     output.showReturnBook(library.returnBook(bookToBeReturned));
-                else output.show("Invalid credentials");
+                } else output.show("Invalid credentials");
             }
         }
     },
@@ -77,12 +80,17 @@ public enum MenuItem implements MenuOperator {
         }
     };
 
-    User attemptLogin() {
+    User attemptLogin(Library library) throws UserNotFoundException {
         output.show("Enter library number: ");
         String number = input.readLine();
         output.show("Enter Password");
         String password = input.readLine();
-        return new User(number, password);
+        try {
+            return library.hasUser(number, password);
+        } catch (UserNotFoundException e) {
+            output.show("User credentials invalid");
+        }
+        return null;
     }
 
     private String menuItem;
@@ -101,6 +109,4 @@ public enum MenuItem implements MenuOperator {
     public String viewItem() {
         return menuItem;
     }
-
-
 }
