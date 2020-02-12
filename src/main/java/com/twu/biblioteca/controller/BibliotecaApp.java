@@ -55,7 +55,7 @@ public class BibliotecaApp {
 
     private void parseInput() throws UserNotLoggedInException {
         int option = getOption();
-        MenuItem userChoice = MenuItem.values()[Math.min((option - 1), 6)];
+        MenuItem userChoice = MenuItem.values()[Math.min((option - 1), 7)];
         userChoice.performOperation(library);
     }
 

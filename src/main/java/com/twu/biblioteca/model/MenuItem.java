@@ -31,7 +31,12 @@ public enum MenuItem implements MenuOperator {
             }
         }
     },
-
+    VIEW_CHECKED_OUT("View checked out books") {
+        @Override
+        public void performOperation(Library library) {
+            output.show(library.viewCheckedOutBooks());
+        }
+    },
     CHECKOUT_MOVIE("Checkout a movie") {
         @Override
         public void performOperation(Library library) {
