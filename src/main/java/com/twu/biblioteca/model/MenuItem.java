@@ -19,7 +19,7 @@ public enum MenuItem implements MenuOperator {
     },
     CHECKOUT_BOOK("Checkout a book") {
         @Override
-        public void performOperation(Library library) throws UserNotLoggedInException {
+        public void performOperation(Library library) {
             output.show("Enter book to checkout: ");
             String bookToBeCheckedOut = input.readLine();
             try {
@@ -42,7 +42,7 @@ public enum MenuItem implements MenuOperator {
     },
     RETURN("Return a book") {
         @Override
-        public void performOperation(Library library) throws UserNotLoggedInException {
+        public void performOperation(Library library) {
             output.show("Enter book to be returned: ");
             String bookToBeReturned = input.readLine();
             try {

@@ -62,9 +62,6 @@ class LibraryTest {
 
     @Test
     void shouldTestIfTheUserIsNotifiedWhenTheRequestedBookIsNotAvailable() throws UserNotLoggedInException {
-//        String expected = "Sorry, that book is not available";
-
-//        assertEquals(expected, library.checkout("Shawshank Redemption").getMessage());
         User user = new User("123-4567", "password0");
         library.login(user);
         assertFalse(library.checkoutBook("Shawshank Redemption"));
