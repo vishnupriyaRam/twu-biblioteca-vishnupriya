@@ -192,4 +192,17 @@ class LibraryTest {
 
         assertEquals(expected, library.viewCheckedOutBooks());
     }
+
+    @Test
+    void shouldTestIfTheUserIsAbleToViewOnlyTheBooksCheckedOutByThem() throws UserNotLoggedInException {
+        User user = new User("123-4567", "password0");
+        library.login(user);
+        library.checkoutBook("Harry Potter");
+        User user2 = new User("123-4568", "password1");
+        library.login(user2);
+        library.checkoutBook("A song of ice and fire");
+        String expected = "A song of ice and fire | Martin RR George | 1996";
+
+        assertEquals(expected, library.viewCheckedOutBooks());
+    }
 }

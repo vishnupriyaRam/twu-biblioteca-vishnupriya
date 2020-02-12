@@ -61,7 +61,7 @@ public class Library {
         StringJoiner list = new StringJoiner("\n");
 
         for (Map.Entry<Book, User> entry : checkedOut.entrySet()) {
-            if(entry.getValue().equals(currentUser.getLibraryNumber()))
+            if(entry.getValue().getLibraryNumber().equals(currentUser.getLibraryNumber()))
                 list.add(entry.getKey().getDetails());
         }
         return list.toString();
