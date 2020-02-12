@@ -1,5 +1,6 @@
 package com.twu.biblioteca.model;
 
+import com.twu.biblioteca.exceptions.UserNotLoggedInException;
 import com.twu.biblioteca.view.Input;
 import com.twu.biblioteca.view.Output;
 
@@ -19,7 +20,7 @@ public enum MenuItem implements MenuOperator {
     },
     CHECKOUT_BOOK("Checkout a book") {
         @Override
-        public void performOperation(Library library) {
+        public void performOperation(Library library) throws UserNotLoggedInException {
             output.show("Enter book to checkout: ");
             String bookToBeCheckedOut = input.readLine();
             output.showCheckoutBook(library.checkoutBook(bookToBeCheckedOut));
@@ -36,7 +37,7 @@ public enum MenuItem implements MenuOperator {
     },
     RETURN("Return a book") {
         @Override
-        public void performOperation(Library library) {
+        public void performOperation(Library library) throws UserNotLoggedInException {
             output.show("Enter book to be returned: ");
             String bookToBeReturned = input.readLine();
             output.showReturnBook(library.returnBook(bookToBeReturned));

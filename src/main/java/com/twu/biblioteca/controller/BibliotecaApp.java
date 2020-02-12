@@ -1,5 +1,6 @@
 package com.twu.biblioteca.controller;
 
+import com.twu.biblioteca.exceptions.UserNotLoggedInException;
 import com.twu.biblioteca.model.*;
 import com.twu.biblioteca.view.Input;
 import com.twu.biblioteca.view.Output;
@@ -20,7 +21,7 @@ public class BibliotecaApp {
         this.menu = menu;
     }
 
-    public void startApp() {
+    public void startApp() throws UserNotLoggedInException {
         displayWelcomeMessage();
 
         while (true) {
@@ -33,7 +34,7 @@ public class BibliotecaApp {
         output.show(welcomeMessage);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UserNotLoggedInException {
         List<Book> books = new ArrayList<>();
         books.add(new Book("Harry Potter", "Rowling JK", "2001"));
         books.add(new Book("The Fault in our stars", "Green John", "2012"));
@@ -52,7 +53,7 @@ public class BibliotecaApp {
         new BibliotecaApp(new Library(books, movies, users), new Menu()).startApp();
     }
 
-    private void parseInput() {
+    private void parseInput() throws UserNotLoggedInException {
         int option = getOption();
         MenuItem userChoice = MenuItem.values()[Math.min((option - 1), 6)];
         userChoice.performOperation(library);

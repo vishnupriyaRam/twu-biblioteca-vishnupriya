@@ -1,5 +1,7 @@
 package com.twu.biblioteca.model;
 
+import com.twu.biblioteca.exceptions.UserNotLoggedInException;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,7 +28,7 @@ public class Library {
         StringJoiner list = new StringJoiner("\n");
 
         booksAvailable.forEach(book -> {
-            if (!checkedOutBooks.contains(book)) {
+            if (!checkedOut.containsKey(book)) {
                 list.add(book.getDetails());
             }
         });
@@ -35,7 +37,7 @@ public class Library {
 
     // TODO - what are different ways to not break CSQ here?
     // TODO - is this a valid usecase to break CQS? - Think about it.
-    public boolean checkoutBook(String title) {
+    public boolean checkoutBook(String title) throws UserNotLoggedInException {
         if (isLoggedIn) {
             Book book = getBook(title);
             if (book != null && !checkedOut.containsKey(book)) {
@@ -44,16 +46,19 @@ public class Library {
             } else
                 return false;
         }
-        return false;
+        throw new UserNotLoggedInException();
     }
 
-    public boolean returnBook(String title) {
-        Book book = getBook(title);
-        if (checkedOutBooks.contains(book)) {
-            checkedOutBooks.remove(book);
-            return true;
+    public boolean returnBook(String title) throws UserNotLoggedInException {
+        if (isLoggedIn) {
+            Book book = getBook(title);
+            if (checkedOut.containsKey(book)) {
+                checkedOut.remove(book);
+                return true;
+            } else
+                return false;
         } else
-            return false;
+            throw new UserNotLoggedInException();
     }
 
     public String viewMovies() {

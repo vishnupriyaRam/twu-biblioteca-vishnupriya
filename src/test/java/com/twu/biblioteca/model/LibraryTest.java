@@ -1,5 +1,6 @@
 package com.twu.biblioteca.model;
 
+import com.twu.biblioteca.exceptions.UserNotLoggedInException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -41,7 +42,7 @@ class LibraryTest {
     }
 
     @Test
-    void shouldTestIfACheckedOutBookIsNotViewableInTheListOfAvailableBooks() {
+    void shouldTestIfACheckedOutBookIsNotViewableInTheListOfAvailableBooks() throws UserNotLoggedInException {
         User user = new User("123-4567", "password0");
         library.login(user);
         String expected = "The Fault in our stars | Green John | 2012\n" +
@@ -53,14 +54,14 @@ class LibraryTest {
     }
 
     @Test
-    void shouldTestIfTheUserIsNotifiedOnSuccessfulCheckout() {
+    void shouldTestIfTheUserIsNotifiedOnSuccessfulCheckout() throws UserNotLoggedInException {
         User user = new User("123-4567", "password0");
         library.login(user);
         assertTrue(library.checkoutBook("Harry Potter"));
     }
 
     @Test
-    void shouldTestIfTheUserIsNotifiedWhenTheRequestedBookIsNotAvailable() {
+    void shouldTestIfTheUserIsNotifiedWhenTheRequestedBookIsNotAvailable() throws UserNotLoggedInException {
 //        String expected = "Sorry, that book is not available";
 
 //        assertEquals(expected, library.checkout("Shawshank Redemption").getMessage());
@@ -70,7 +71,7 @@ class LibraryTest {
     }
 
     @Test
-    void shouldTestIfTheReturnedBookAppearsInTheListOfAvailableBooks() {
+    void shouldTestIfTheReturnedBookAppearsInTheListOfAvailableBooks() throws UserNotLoggedInException {
         User user = new User("123-4567", "password0");
         library.login(user);
         String expected = "Harry Potter | Rowling JK | 2001\n" +
@@ -84,7 +85,7 @@ class LibraryTest {
     }
 
     @Test
-    void shouldTestIfTheUserIsNotifiedOnSuccessfulReturn() {
+    void shouldTestIfTheUserIsNotifiedOnSuccessfulReturn() throws UserNotLoggedInException {
         User user = new User("123-4567", "password0");
         library.login(user);
 
@@ -94,7 +95,7 @@ class LibraryTest {
     }
 
     @Test
-    void shouldTestIfTheUserIsNotifiedOnUnsuccessfulReturnOfTheBook() {
+    void shouldTestIfTheUserIsNotifiedOnUnsuccessfulReturnOfTheBook() throws UserNotLoggedInException {
         User user = new User("123-4567", "password0");
         library.login(user);
 
@@ -102,7 +103,7 @@ class LibraryTest {
     }
 
     @Test
-    void shouldTestIfACheckedOutBookCannotBeCheckedOutAgain() {
+    void shouldTestIfACheckedOutBookCannotBeCheckedOutAgain() throws UserNotLoggedInException {
         User user = new User("123-4567", "password0");
         library.login(user);
 
@@ -159,18 +160,28 @@ class LibraryTest {
     }
 
     @Test
-    void shouldTestIfTheUserCanCheckoutTheBookOnlyAfterLoggingIn() {
+    void shouldTestIfTheUserCanCheckoutTheBookOnlyAfterLoggingIn() throws UserNotLoggedInException {
         User user = new User("123-4567", "password0");
         library.login(user);
         assertTrue(library.checkoutBook("Harry Potter"));
     }
 
     @Test
-    void shouldTestIfTheUserDetailsAreAddedWhenABookIsCheckedOut(){
+    void shouldTestIfTheUserDetailsAreAddedWhenABookIsCheckedOut() throws UserNotLoggedInException {
         User user = new User("123-4567", "password0");
         library.login(user);
         library.checkoutBook("Harry Potter");
         String expected = "123-4567";
         assertEquals(expected, library.getAccountable("Harry Potter"));
+    }
+
+    @Test
+    void shouldTestIfTheUserCannotReturnABookWithoutLoggingIn() throws UserNotLoggedInException {
+        assertThrows(UserNotLoggedInException.class, () -> library.returnBook("Harry Potter"));
+    }
+
+    @Test
+    void shouldTestIfUserNotLoggedInExceptionIsThrownIfTheUserIsNotLoggedIn() {
+        assertThrows(UserNotLoggedInException.class, () -> library.checkoutBook("Harry Potter"));
     }
 }
