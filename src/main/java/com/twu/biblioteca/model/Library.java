@@ -5,7 +5,7 @@ import com.twu.biblioteca.exceptions.UserNotLoggedInException;
 
 import java.util.*;
 
-
+//TODO: class structure
 public class Library {
     private List<Book> booksAvailable;
     private List<Movie> moviesAvailable;
@@ -110,6 +110,19 @@ public class Library {
         this.loginListener = loginListener;
     }
 
+    public User hasUser(String number, String password) throws UserNotFoundException {
+        for (User user: users) {
+            if(user.isValid(number, password))
+                return user;
+        }
+        throw new UserNotFoundException();
+    }
+
+    public String getUserDetails() {
+        return currentUser.getDetails();
+    }
+
+
     private Book getBook(String title) { // TODO - its private, so its still okay....
         for (Book book : booksAvailable) {
             if (book.hasSameName(title))
@@ -124,17 +137,5 @@ public class Library {
                 return movie;
         }
         return null;
-    }
-
-    public User hasUser(String number, String password) throws UserNotFoundException {
-        for (User user: users) {
-            if(user.isValid(number, password))
-                return user;
-        }
-        throw new UserNotFoundException();
-    }
-
-    public String getUserDetails() {
-        return currentUser.getDetails();
     }
 }
