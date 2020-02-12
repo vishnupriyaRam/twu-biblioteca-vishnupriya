@@ -1,6 +1,7 @@
 package com.twu.biblioteca.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.StringJoiner;
 
@@ -10,11 +11,12 @@ public class Library {
     private List<Movie> moviesAvailable;
     private List<Book> checkedOutBooks = new ArrayList<>();
     private List<Movie> checkedOutMovies = new ArrayList<>();
+    private List<User> users;
 
-
-    public Library(List<Book> booksAvailable, List<Movie> moviesAvailable) {
+    public Library(List<Book> booksAvailable, List<Movie> moviesAvailable, List<User> users) {
         this.booksAvailable = booksAvailable;
         this.moviesAvailable = moviesAvailable;
+        this.users = users;
     }
 
     public String viewBooks() {
@@ -68,6 +70,10 @@ public class Library {
             return false;
     }
 
+    public boolean login(User user) {
+        return true;
+    }
+
     private Book getBook(String title) { // TODO - its private, so its still okay....
         for (Book book : booksAvailable) {
             if (book.hasSameName(title))
@@ -83,6 +89,4 @@ public class Library {
         }
         return null;
     }
-
-
 }

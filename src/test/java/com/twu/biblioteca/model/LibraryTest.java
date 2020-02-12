@@ -24,7 +24,11 @@ class LibraryTest {
         movies.add(new Movie("Seven", "1995", "David Fincher", "8.6"));
         movies.add(new Movie("The Shawshank Redemption", "1994", "Frank Darabont", "9.3"));
 
-        library = new Library(books, movies);
+        List<User> users = new ArrayList<>();
+        users.add(new User("123-4567", "password0"));
+        users.add(new User("123-4568", "password1"));
+        users.add(new User("123-4569", "password2"));
+        library = new Library(books, movies, users);
     }
 
     @Test
@@ -127,4 +131,11 @@ class LibraryTest {
     void shouldTestIfTheUserIsNotifiedWhenTheRequestedMovieIsNotAvailable() {
         assertFalse(library.checkoutMovies("Harry Potter"));
     }
+
+    @Test
+    void shouldTestIfTheUserCanLogin() {
+        User user = new User("123-4567", "password");
+        assertTrue(library.login(user));
+    }
+
 }

@@ -1,9 +1,6 @@
 package com.twu.biblioteca.controller;
 
-import com.twu.biblioteca.model.Book;
-import com.twu.biblioteca.model.Library;
-import com.twu.biblioteca.model.Menu;
-import com.twu.biblioteca.model.Movie;
+import com.twu.biblioteca.model.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -39,7 +36,11 @@ class BibliotecaAppTest {
         movies.add(new Movie("Seven", "1995", "David Fincher", "8.6"));
         movies.add(new Movie("The Shawshank Redemption", "1994", "Frank Darabont", "9.3"));
 
-        bibliotecaApp = new BibliotecaApp(new Library(books, movies), new Menu());
+        List<User> users = new ArrayList<>();
+        users.add(new User("123-4567", "password0"));
+        users.add(new User("123-4568", "password1"));
+        users.add(new User("123-4569", "password2"));
+        bibliotecaApp = new BibliotecaApp(new Library(books, movies, users), new Menu());
     }
 
     @AfterEach

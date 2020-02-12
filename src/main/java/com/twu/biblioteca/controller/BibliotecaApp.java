@@ -44,7 +44,12 @@ public class BibliotecaApp {
         movies.add(new Movie("Seven", "1995", "David Fincher", "8.6"));
         movies.add(new Movie("The Shawshank Redemption", "1994", "Frank Darabont", "9.3"));
 
-        new BibliotecaApp(new Library(books, movies), new Menu()).startApp();
+        List<User> users = new ArrayList<>();
+        users.add(new User("123-4567", "password0"));
+        users.add(new User("123-4568", "password1"));
+        users.add(new User("123-4569", "password2"));
+
+        new BibliotecaApp(new Library(books, movies, users), new Menu()).startApp();
     }
 
     private void parseInput() {
