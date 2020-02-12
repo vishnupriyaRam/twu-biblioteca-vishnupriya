@@ -134,8 +134,13 @@ class LibraryTest {
 
     @Test
     void shouldTestIfTheUserCanLogin() {
-        User user = new User("123-4567", "password");
+        User user = new User("123-4567", "password0");
         assertTrue(library.login(user));
     }
 
+    @Test
+    void shouldTestIfTheUserCannotLoginIfTheUserIsNotAMember() {
+        User user = new User("145-4567", "password");
+        assertFalse(library.login(user));
+    }
 }
