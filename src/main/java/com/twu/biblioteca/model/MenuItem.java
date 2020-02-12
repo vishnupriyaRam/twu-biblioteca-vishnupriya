@@ -19,7 +19,7 @@ public enum MenuItem implements MenuOperator {
     },
     CHECKOUT_BOOK("Checkout a book") {
         @Override
-        public void performOperation(Library library) {
+        public void performOperation(Library library) throws UserNotLoggedInException {
             output.show("Enter book to checkout: ");
             String bookToBeCheckedOut = input.readLine();
             try {
@@ -27,7 +27,9 @@ public enum MenuItem implements MenuOperator {
             } catch (UserNotLoggedInException e) {
                 output.show("User not logged in");
                 User user = attemptLogin();
-                library.login(user);
+                if (library.login(user))
+                    output.showCheckoutBook(library.checkoutBook(bookToBeCheckedOut));
+                else output.show("Invalid credentials");
             }
         }
     },
@@ -47,7 +49,7 @@ public enum MenuItem implements MenuOperator {
     },
     RETURN("Return a book") {
         @Override
-        public void performOperation(Library library) {
+        public void performOperation(Library library) throws UserNotLoggedInException {
             output.show("Enter book to be returned: ");
             String bookToBeReturned = input.readLine();
             try {
@@ -55,7 +57,9 @@ public enum MenuItem implements MenuOperator {
             } catch (UserNotLoggedInException e) {
                 output.show("User not logged in");
                 User user = attemptLogin();
-                library.login(user);
+                if (library.login(user))
+                    output.showReturnBook(library.returnBook(bookToBeReturned));
+                else output.show("Invalid credentials");
             }
         }
     },
@@ -75,10 +79,10 @@ public enum MenuItem implements MenuOperator {
 
     User attemptLogin() {
         output.show("Enter library number: ");
-        input.readLine();
+        String number = input.readLine();
         output.show("Enter Password");
-        input.readLine();
-        return new User("123-4567", "password0");
+        String password = input.readLine();
+        return new User(number, password);
     }
 
     private String menuItem;

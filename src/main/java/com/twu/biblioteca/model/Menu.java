@@ -24,8 +24,8 @@ public class Menu {
         menuItems.add(MenuItem.LIST_BOOKS);
         menuItems.add(MenuItem.LIST_MOVIES);
         menuItems.add(MenuItem.CHECKOUT_BOOK);
-        menuItems.add(MenuItem.CHECKOUT_MOVIE);
         menuItems.add(MenuItem.VIEW_CHECKED_OUT);
+        menuItems.add(MenuItem.CHECKOUT_MOVIE);
         menuItems.add(MenuItem.RETURN);
         menuItems.add(MenuItem.QUIT);
     }
