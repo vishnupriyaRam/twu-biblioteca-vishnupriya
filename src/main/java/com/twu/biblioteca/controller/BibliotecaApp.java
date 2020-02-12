@@ -14,7 +14,9 @@ public class BibliotecaApp {
     Menu menu;
     Input input = new Input();
     Output output = new Output(System.out);
-
+    static List<Book> books = new ArrayList<>();
+    static List<Movie> movies = new ArrayList<>();
+    static List<User> users = new ArrayList<>();
     final String welcomeMessage = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!\n";
 
     public BibliotecaApp(Library library, Menu menu) {
@@ -35,22 +37,22 @@ public class BibliotecaApp {
         output.show(welcomeMessage);
     }
 
-    public static void main(String[] args) throws UserNotLoggedInException, UserNotFoundException {
-        List<Book> books = new ArrayList<>();
+    private static void populateItems() {
         books.add(new Book("Harry Potter", "Rowling JK", "2001"));
         books.add(new Book("The Fault in our stars", "Green John", "2012"));
         books.add(new Book("A song of ice and fire", "Martin RR George", "1996"));
 
-        List<Movie> movies = new ArrayList<>();
         movies.add(new Movie("Forrest Gump", "1994", "Robert Zemeckis", "8.8"));
         movies.add(new Movie("Seven", "1995", "David Fincher", "8.6"));
         movies.add(new Movie("The Shawshank Redemption", "1994", "Frank Darabont", "9.3"));
 
-        List<User> users = new ArrayList<>();
         users.add(new User("123-4567", "password0", "Henry", "henry@gmail.com", "9898989898"));
         users.add(new User("123-4568", "password1", "Harry", "harry@gmail.com", "8989898989"));
         users.add(new User("123-4569", "password2", "Golding", "golding@gmail.com", "7878787878"));
+    }
 
+    public static void main(String[] args) throws UserNotLoggedInException, UserNotFoundException {
+        populateItems();
         Library library = new Library(books, movies, users);
         new BibliotecaApp(library, new Menu(library)).startApp();
     }
