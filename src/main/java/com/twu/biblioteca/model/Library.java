@@ -36,16 +36,14 @@ public class Library {
         return list.toString();
     }
 
-    // TODO - what are different ways to not break CSQ here?
-    // TODO - is this a valid usecase to break CQS? - Think about it.
-    public boolean checkoutBook(String title) throws UserNotLoggedInException {
+    public void checkoutBook(String title, Output output) throws UserNotLoggedInException {
         if (isLoggedIn) {
             Book book = getBook(title);
             if (book != null && !checkedOut.containsKey(book)) {
                 checkedOut.put(book, currentUser);
-                return true;
+                output.show(CHECKOUT_SUCCESS.getMessage());
             } else
-                return false;
+                output.show(CHECKOUT_FAILURE.getMessage());
         }
         throw new UserNotLoggedInException();
     }
@@ -114,8 +112,8 @@ public class Library {
     }
 
     public User hasUser(String number, String password) throws UserNotFoundException {
-        for (User user: users) {
-            if(user.isValid(number, password))
+        for (User user : users) {
+            if (user.isValid(number, password))
                 return user;
         }
         throw new UserNotFoundException();

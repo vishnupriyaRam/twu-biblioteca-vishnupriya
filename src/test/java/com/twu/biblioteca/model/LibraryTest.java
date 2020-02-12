@@ -50,38 +50,47 @@ class LibraryTest {
 
     @Test
     void shouldTestIfACheckedOutBookIsNotViewableInTheListOfAvailableBooks() throws UserNotLoggedInException {
+        Output output = mock(Output.class);
         User user = new User("123-4568", "password1", "Harry", "harry@gmail.com", "8989898989");
         library.login(user);
         String expected = "The Fault in our stars | Green John | 2012\n" +
                 "A song of ice and fire | Martin RR George | 1996";
 
-        library.checkoutBook("Harry Potter");
+        library.checkoutBook("Harry Potter", output);
 
         assertEquals(expected, library.viewBooks());
     }
 
     @Test
     void shouldTestIfTheUserIsNotifiedOnSuccessfulCheckout() throws UserNotLoggedInException {
+        Output output = mock(Output.class);
         User user = new User("123-4568", "password1", "Harry", "harry@gmail.com", "8989898989");
         library.login(user);
-        assertTrue(library.checkoutBook("Harry Potter"));
+        library.checkoutBook("Harry Potter", output);
+
+        verify(output).show("Thank you! Enjoy the book");
+
     }
 
     @Test
     void shouldTestIfTheUserIsNotifiedWhenTheRequestedBookIsNotAvailable() throws UserNotLoggedInException {
+        Output output = mock(Output.class);
         User user = new User("123-4568", "password1", "Harry", "harry@gmail.com", "8989898989");
         library.login(user);
-        assertFalse(library.checkoutBook("Shawshank Redemption"));
+
+        library.checkoutBook("Shawshank Redemption", output);
+        verify(output).show("Sorry, that book is not available");
     }
 
     @Test
     void shouldTestIfTheReturnedBookAppearsInTheListOfAvailableBooks() throws UserNotLoggedInException {
+        Output output = mock(Output.class);
         User user = new User("123-4568", "password1", "Harry", "harry@gmail.com", "8989898989");
         library.login(user);
         String expected = "Harry Potter | Rowling JK | 2001\n" +
                 "The Fault in our stars | Green John | 2012\n" +
                 "A song of ice and fire | Martin RR George | 1996";
-        library.checkoutBook("Harry Potter");
+        library.checkoutBook("Harry Potter", output);
 
         library.returnBook("Harry Potter");
 
@@ -90,30 +99,36 @@ class LibraryTest {
 
     @Test
     void shouldTestIfTheUserIsNotifiedOnSuccessfulReturn() throws UserNotLoggedInException {
+        Output output = mock(Output.class);
         User user = new User("123-4568", "password1", "Harry", "harry@gmail.com", "8989898989");
         library.login(user);
 
-        library.checkoutBook("Harry Potter");
+        library.checkoutBook("Harry Potter", output);
 
         assertTrue(library.returnBook("Harry Potter"));
     }
 
     @Test
     void shouldTestIfTheUserIsNotifiedOnUnsuccessfulReturnOfTheBook() throws UserNotLoggedInException {
+        Output output = mock(Output.class);
         User user = new User("123-4568", "password1", "Harry", "harry@gmail.com", "8989898989");
         library.login(user);
 
-        assertFalse(library.checkoutBook("Shawshank Redemption"));
+        library.checkoutBook("Shawshank Redemption", output);
+
+        verify(output).show("Sorry, that book is not available");
     }
 
     @Test
     void shouldTestIfACheckedOutBookCannotBeCheckedOutAgain() throws UserNotLoggedInException {
+        Output output = mock(Output.class);
         User user = new User("123-4568", "password1", "Harry", "harry@gmail.com", "8989898989");
         library.login(user);
+        library.checkoutBook("Harry Potter", output);
 
-        library.checkoutBook("Harry Potter");
+        library.checkoutBook("Harry Potter", output);
 
-        assertFalse(library.checkoutBook("Harry Potter"));
+        verify(output).show("Sorry, that book is not available");
     }
 
     @Test
@@ -173,16 +188,21 @@ class LibraryTest {
 
     @Test
     void shouldTestIfTheUserCanCheckoutTheBookOnlyAfterLoggingIn() throws UserNotLoggedInException {
+        Output output = mock(Output.class);
         User user = new User("123-4567", "password0", "Henry", "henry@gmail.com", "9898989898");
         library.login(user);
-        assertTrue(library.checkoutBook("Harry Potter"));
+
+        library.checkoutBook("Harry Potter", output);
+
+        verify(output).show("Thank you! Enjoy the book");
     }
 
     @Test
     void shouldTestIfTheUserDetailsAreAddedWhenABookIsCheckedOut() throws UserNotLoggedInException {
+        Output output = mock(Output.class);
         User user = new User("123-4567", "password0", "Henry", "henry@gmail.com", "9898989898");
         library.login(user);
-        library.checkoutBook("Harry Potter");
+        library.checkoutBook("Harry Potter", output);
         String expected = "123-4567";
 
         assertEquals(expected, library.getAccountable("Harry Potter"));
@@ -195,14 +215,16 @@ class LibraryTest {
 
     @Test
     void shouldTestIfUserNotLoggedInExceptionIsThrownIfTheUserIsNotLoggedIn() {
-        assertThrows(UserNotLoggedInException.class, () -> library.checkoutBook("Harry Potter"));
+        Output output = mock(Output.class);
+        assertThrows(UserNotLoggedInException.class, () -> library.checkoutBook("Harry Potter", output));
     }
 
     @Test
     void shouldTestIfUserIsAbleToViewCheckedOutBooks() throws UserNotLoggedInException {
+        Output output = mock(Output.class);
         User user = new User("123-4567", "password0", "Henry", "henry@gmail.com", "9898989898");
         library.login(user);
-        library.checkoutBook("Harry Potter");
+        library.checkoutBook("Harry Potter", output);
         String expected = "Harry Potter | Rowling JK | 2001";
 
         assertEquals(expected, library.viewCheckedOutBooks());
@@ -210,12 +232,13 @@ class LibraryTest {
 
     @Test
     void shouldTestIfTheUserIsAbleToViewOnlyTheBooksCheckedOutByThem() throws UserNotLoggedInException {
+        Output output = mock(Output.class);
         User user = new User("123-4567", "password0", "Henry", "henry@gmail.com", "9898989898");
         library.login(user);
-        library.checkoutBook("Harry Potter");
+        library.checkoutBook("Harry Potter", output);
         User user2 = new User("123-4568", "password1", "Harry", "harry@gmail.com", "8989898989");
         library.login(user2);
-        library.checkoutBook("A song of ice and fire");
+        library.checkoutBook("A song of ice and fire", output);
         String expected = "A song of ice and fire | Martin RR George | 1996";
 
         assertEquals(expected, library.viewCheckedOutBooks());
