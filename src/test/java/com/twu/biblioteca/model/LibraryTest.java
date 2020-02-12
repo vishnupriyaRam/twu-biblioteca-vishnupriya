@@ -42,6 +42,8 @@ class LibraryTest {
 
     @Test
     void shouldTestIfACheckedOutBookIsNotViewableInTheListOfAvailableBooks() {
+        User user = new User("123-4567", "password0");
+        library.login(user);
         String expected = "The Fault in our stars | Green John | 2012\n" +
                 "A song of ice and fire | Martin RR George | 1996";
 
@@ -52,9 +54,8 @@ class LibraryTest {
 
     @Test
     void shouldTestIfTheUserIsNotifiedOnSuccessfulCheckout() {
-//        String expected = "Thank you! Enjoy the book";
-
-//        assertEquals(expected, library.checkout("Harry Potter").getMessage());
+        User user = new User("123-4567", "password0");
+        library.login(user);
         assertTrue(library.checkoutBook("Harry Potter"));
     }
 
@@ -63,11 +64,15 @@ class LibraryTest {
 //        String expected = "Sorry, that book is not available";
 
 //        assertEquals(expected, library.checkout("Shawshank Redemption").getMessage());
+        User user = new User("123-4567", "password0");
+        library.login(user);
         assertFalse(library.checkoutBook("Shawshank Redemption"));
     }
 
     @Test
     void shouldTestIfTheReturnedBookAppearsInTheListOfAvailableBooks() {
+        User user = new User("123-4567", "password0");
+        library.login(user);
         String expected = "Harry Potter | Rowling JK | 2001\n" +
                 "The Fault in our stars | Green John | 2012\n" +
                 "A song of ice and fire | Martin RR George | 1996";
@@ -80,24 +85,27 @@ class LibraryTest {
 
     @Test
     void shouldTestIfTheUserIsNotifiedOnSuccessfulReturn() {
-//        String expected = "Thank you for returning the book";
+        User user = new User("123-4567", "password0");
+        library.login(user);
 
         library.checkoutBook("Harry Potter");
 
-//        assertEquals(expected, library.returnBook("Harry Potter").getMessage());
         assertTrue(library.returnBook("Harry Potter"));
     }
 
     @Test
     void shouldTestIfTheUserIsNotifiedOnUnsuccessfulReturnOfTheBook() {
-//        String expected = "That is not a valid book to return.";
+        User user = new User("123-4567", "password0");
+        library.login(user);
 
-//        assertEquals(expected, library.returnBook("2 States").getMessage());
         assertFalse(library.checkoutBook("Shawshank Redemption"));
     }
 
     @Test
     void shouldTestIfACheckedOutBookCannotBeCheckedOutAgain() {
+        User user = new User("123-4567", "password0");
+        library.login(user);
+
         library.checkoutBook("Harry Potter");
 
         assertFalse(library.checkoutBook("Harry Potter"));
@@ -148,5 +156,12 @@ class LibraryTest {
     void shouldTestIfTheUserIsAbleToLoginOnlyWithTheCorrectCredentials() {
         User user = new User("123-4567", "password2121");
         assertFalse(library.login(user));
+    }
+
+    @Test
+    void shouldTestIfTheUserCanCheckoutTheBookOnlyAfterLoggingIn() {
+        User user = new User("123-4567", "password0");
+        library.login(user);
+        assertTrue(library.checkoutBook("Harry Potter"));
     }
 }

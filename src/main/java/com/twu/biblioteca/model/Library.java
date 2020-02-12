@@ -12,6 +12,7 @@ public class Library {
     private List<Book> checkedOutBooks = new ArrayList<>();
     private List<Movie> checkedOutMovies = new ArrayList<>();
     private List<User> users;
+    private boolean isLoggedIn;
 
     public Library(List<Book> booksAvailable, List<Movie> moviesAvailable, List<User> users) {
         this.booksAvailable = booksAvailable;
@@ -33,12 +34,15 @@ public class Library {
     // TODO - what are different ways to not break CSQ here?
     // TODO - is this a valid usecase to break CQS? - Think about it.
     public boolean checkoutBook(String title) {
-        Book book = getBook(title);
-        if (book != null && !checkedOutBooks.contains(book)) {
-            checkedOutBooks.add(book);
-            return true;
-        } else
-            return false;
+        if (isLoggedIn) {
+            Book book = getBook(title);
+            if (book != null && !checkedOutBooks.contains(book)) {
+                checkedOutBooks.add(book);
+                return true;
+            } else
+                return false;
+        }
+        return false;
     }
 
     public boolean returnBook(String title) {
@@ -71,7 +75,12 @@ public class Library {
     }
 
     public boolean login(User user) {
-        return users.contains(user);
+        if (users.contains(user)) {
+            isLoggedIn = true;
+            return true;
+        }
+        isLoggedIn = false;
+        return false;
     }
 
     private Book getBook(String title) { // TODO - its private, so its still okay....
