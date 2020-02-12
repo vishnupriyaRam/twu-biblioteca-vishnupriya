@@ -68,7 +68,7 @@ public enum MenuItem implements MenuOperator {
         }
     };
 
-    public User attemptLogin() {
+    User attemptLogin() {
         output.show("Enter library number: ");
         input.readLine();
         output.show("Enter Password");

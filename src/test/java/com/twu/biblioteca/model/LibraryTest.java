@@ -169,11 +169,12 @@ class LibraryTest {
         library.login(user);
         library.checkoutBook("Harry Potter");
         String expected = "123-4567";
+
         assertEquals(expected, library.getAccountable("Harry Potter"));
     }
 
     @Test
-    void shouldTestIfTheUserCannotReturnABookWithoutLoggingIn() throws UserNotLoggedInException {
+    void shouldTestIfTheUserCannotReturnABookWithoutLoggingIn() {
         assertThrows(UserNotLoggedInException.class, () -> library.returnBook("Harry Potter"));
     }
 
