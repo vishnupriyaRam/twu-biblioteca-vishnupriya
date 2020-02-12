@@ -22,10 +22,6 @@ public class User {
         return libraryNumber;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -41,5 +37,9 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(libraryNumber, password, name, email, phone);
+    }
+
+    public boolean isValid(String number, String password) {
+        return this.libraryNumber.equals(number) && this.password.equals(password);
     }
 }

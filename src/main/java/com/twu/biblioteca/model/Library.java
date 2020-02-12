@@ -128,7 +128,7 @@ public class Library {
 
     public User hasUser(String number, String password) throws UserNotFoundException {
         for (User user: users) {
-            if(user.getLibraryNumber().equals(number) && user.getPassword().equals(password))
+            if(user.isValid(number, password))
                 return user;
         }
         throw new UserNotFoundException();
