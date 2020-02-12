@@ -47,4 +47,9 @@ public class User {
     public boolean isValid(String number, String password) {
         return this.libraryNumber.equals(number) && this.password.equals(password);
     }
+
+    public String getDetails() {
+        String separator = "\n";
+        return name + separator + email + separator + phone;
+    }
 }

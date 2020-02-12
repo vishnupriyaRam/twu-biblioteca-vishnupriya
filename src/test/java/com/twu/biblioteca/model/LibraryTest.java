@@ -213,4 +213,12 @@ class LibraryTest {
         User newUser = library.hasUser("123-4567", "password0");
         assertEquals(user, newUser);
     }
+
+    @Test
+    void shouldTestIfTheUserDetailsAreDisplayed() {
+        User user = new User("123-4567", "password0", "Henry", "henry@gmail.com", "9898989898");
+        String expected = "Henry\nhenry@gmail.com\n9898989898";
+
+        assertEquals(expected, user.getDetails());
+    }
 }

@@ -133,4 +133,8 @@ public class Library {
         }
         throw new UserNotFoundException();
     }
+
+    public String getUserDetails() {
+        return currentUser.getDetails();
+    }
 }
