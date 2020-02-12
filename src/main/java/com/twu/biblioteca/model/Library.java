@@ -72,7 +72,6 @@ public class Library {
 
     public boolean login(User user) {
         return users.contains(user);
-
     }
 
     private Book getBook(String title) { // TODO - its private, so its still okay....

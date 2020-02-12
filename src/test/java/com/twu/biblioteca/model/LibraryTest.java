@@ -143,4 +143,10 @@ class LibraryTest {
         User user = new User("145-4567", "password");
         assertFalse(library.login(user));
     }
+
+    @Test
+    void shouldTestIfTheUserIsAbleToLoginOnlyWithTheCorrectCredentials() {
+        User user = new User("123-4567", "password2121");
+        assertFalse(library.login(user));
+    }
 }
