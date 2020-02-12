@@ -11,4 +11,11 @@ class UserTest {
         User user2 = new User("123-4568", "password1", "Harry", "harry@gmail.com", "8989898989");
         assertEquals(user1, user2);
     }
+
+    @Test
+    void shouldNotMatchTheTwoUsersWithDifferentDetails() {
+        User user1 = new User("123-4568", "password1", "Harry", "harry@gmail.com", "8989898989");
+        User user2 = new User("123-4568", "password1", "Hebert", "harry@gmail.com", "8989898989");
+        assertNotEquals(user1, user2);
+    }
 }

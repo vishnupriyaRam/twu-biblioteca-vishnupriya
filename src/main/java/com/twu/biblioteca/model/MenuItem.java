@@ -66,6 +66,12 @@ public enum MenuItem implements MenuOperator {
             }
         }
     },
+    VIEW_USER_DETAILS("View user details"){
+        @Override
+        public void performOperation(Library library) throws UserNotLoggedInException, UserNotFoundException {
+
+        }
+    },
     QUIT("Quit") {
         @Override
         public void performOperation(Library library) {

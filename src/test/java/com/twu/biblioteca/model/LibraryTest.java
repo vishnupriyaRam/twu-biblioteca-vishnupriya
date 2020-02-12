@@ -1,5 +1,6 @@
 package com.twu.biblioteca.model;
 
+import com.twu.biblioteca.exceptions.UserNotFoundException;
 import com.twu.biblioteca.exceptions.UserNotLoggedInException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -204,5 +205,12 @@ class LibraryTest {
         String expected = "A song of ice and fire | Martin RR George | 1996";
 
         assertEquals(expected, library.viewCheckedOutBooks());
+    }
+
+    @Test
+    void shouldTestIfAUserHasTheGivenNameAndPassword() throws UserNotFoundException {
+        User user = new User("123-4567", "password0", "Henry", "henry@gmail.com", "9898989898");
+        User newUser = library.hasUser("123-4567", "password0");
+        assertEquals(user, newUser);
     }
 }

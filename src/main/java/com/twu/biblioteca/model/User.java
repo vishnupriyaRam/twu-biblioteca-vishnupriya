@@ -26,18 +26,20 @@ public class User {
         return password;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return libraryNumber.equals(user.libraryNumber) &&
-                password.equals(user.password);
+                password.equals(user.password) &&
+                name.equals(user.name) &&
+                email.equals(user.email) &&
+                phone.equals(user.phone);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(libraryNumber, password);
+        return Objects.hash(libraryNumber, password, name, email, phone);
     }
 }
