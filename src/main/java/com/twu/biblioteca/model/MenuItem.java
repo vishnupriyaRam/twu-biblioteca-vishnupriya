@@ -46,7 +46,7 @@ public enum MenuItem implements MenuOperator {
         public void performOperation(Library library) {
             output.show("Enter movie to checkout");
             String movieToBeCheckedOut = input.readLine();
-            output.show(library.checkoutMovies(movieToBeCheckedOut).getMessage());
+            library.checkoutMovies(movieToBeCheckedOut, output);
         }
     },
     RETURN("Return a book") {

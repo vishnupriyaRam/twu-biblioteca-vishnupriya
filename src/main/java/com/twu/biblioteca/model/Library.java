@@ -2,11 +2,11 @@ package com.twu.biblioteca.model;
 
 import com.twu.biblioteca.exceptions.UserNotFoundException;
 import com.twu.biblioteca.exceptions.UserNotLoggedInException;
+import com.twu.biblioteca.view.Output;
 
 import java.util.*;
 
-import static com.twu.biblioteca.model.NotificationMessages.RETURN_FAILURE;
-import static com.twu.biblioteca.model.NotificationMessages.RETURN_SUCCESS;
+import static com.twu.biblioteca.model.NotificationMessages.*;
 
 //TODO: class structure
 public class Library {
@@ -83,13 +83,13 @@ public class Library {
         return list.toString();
     }
 
-    public NotificationMessages checkoutMovies(String title) {
+    public void checkoutMovies(String title, Output output) {
         Movie movie = getMovie(title);
         if (movie != null && !checkedOutMovies.contains(movie)) {
             checkedOutMovies.add(movie);
-            return RETURN_SUCCESS;
+            output.show(CHECKOUT_SUCCESS_MOVIE.getMessage());
         } else
-            return RETURN_FAILURE;
+            output.show(CHECKOUT_FAILURE_MOVIE.getMessage());
     }
 
     public boolean login(User user) {

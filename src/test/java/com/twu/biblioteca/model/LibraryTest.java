@@ -2,15 +2,19 @@ package com.twu.biblioteca.model;
 
 import com.twu.biblioteca.exceptions.UserNotFoundException;
 import com.twu.biblioteca.exceptions.UserNotLoggedInException;
+import com.twu.biblioteca.view.Output;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.twu.biblioteca.model.NotificationMessages.RETURN_FAILURE;
 import static com.twu.biblioteca.model.NotificationMessages.RETURN_SUCCESS;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 
 class LibraryTest {
@@ -126,19 +130,27 @@ class LibraryTest {
         String expected = "Forrest Gump | 1994 | Robert Zemeckis | 8.8\n" +
                 "The Shawshank Redemption | 1994 | Frank Darabont | 9.3";
 
-        library.checkoutMovies("Seven");
+        library.checkoutMovies("Seven", mock(Output.class));
 
         assertEquals(expected, library.viewMovies());
     }
 
     @Test
     void shouldTestIfTheUserIsNotifiedOnSuccessfulCheckoutOfAMovie() {
-        assertEquals(library.checkoutMovies("Seven"), RETURN_SUCCESS);
+        Output output = mock(Output.class);
+
+        library.checkoutMovies("Seven", output);
+
+        verify(output).show("Thank you! Enjoy the movie");
     }
 
     @Test
     void shouldTestIfTheUserIsNotifiedWhenTheRequestedMovieIsNotAvailable() {
-        assertEquals(library.checkoutMovies("Harry Potter"), RETURN_FAILURE);
+        Output output = mock(Output.class);
+
+        library.checkoutMovies("test", output);
+
+        verify(output).show("Sorry, that movie is not available");
     }
 
     @Test
