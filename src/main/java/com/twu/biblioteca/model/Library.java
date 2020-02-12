@@ -2,16 +2,13 @@ package com.twu.biblioteca.model;
 
 import com.twu.biblioteca.exceptions.UserNotLoggedInException;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.StringJoiner;
+import java.util.*;
 
 
 public class Library {
     private List<Book> booksAvailable;
     private List<Movie> moviesAvailable;
-    private HashMap<Book, User> checkedOut = new HashMap<>();
+    private Map<Book, User> checkedOut = new HashMap<>();
     private List<Movie> checkedOutMovies = new ArrayList<>();
     private List<User> users;
     private boolean isLoggedIn;
@@ -58,6 +55,16 @@ public class Library {
                 return false;
         } else
             throw new UserNotLoggedInException();
+    }
+
+    public String viewCheckedOutBooks(){
+        StringJoiner list = new StringJoiner("\n");
+
+        for (Map.Entry<Book, User> entry : checkedOut.entrySet()) {
+            if(entry.getValue().equals(currentUser.getLibraryNumber()))
+                list.add(entry.getKey().getDetails());
+        }
+        return list.toString();
     }
 
     public String viewMovies() {

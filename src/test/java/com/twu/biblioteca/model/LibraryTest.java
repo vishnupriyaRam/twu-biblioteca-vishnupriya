@@ -182,4 +182,14 @@ class LibraryTest {
     void shouldTestIfUserNotLoggedInExceptionIsThrownIfTheUserIsNotLoggedIn() {
         assertThrows(UserNotLoggedInException.class, () -> library.checkoutBook("Harry Potter"));
     }
+
+    @Test
+    void shouldTestIfUserIsAbleToViewCheckedOutBooks() throws UserNotLoggedInException {
+        User user = new User("123-4567", "password0");
+        library.login(user);
+        library.checkoutBook("Harry Potter");
+        String expected = "Harry Potter | Rowling JK | 2001";
+
+        assertEquals(expected, library.viewCheckedOutBooks());
+    }
 }
