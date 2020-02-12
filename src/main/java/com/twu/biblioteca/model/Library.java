@@ -5,6 +5,9 @@ import com.twu.biblioteca.exceptions.UserNotLoggedInException;
 
 import java.util.*;
 
+import static com.twu.biblioteca.model.NotificationMessages.RETURN_FAILURE;
+import static com.twu.biblioteca.model.NotificationMessages.RETURN_SUCCESS;
+
 //TODO: class structure
 public class Library {
     private List<Book> booksAvailable;
@@ -80,13 +83,13 @@ public class Library {
         return list.toString();
     }
 
-    public boolean checkoutMovies(String title) {
+    public NotificationMessages checkoutMovies(String title) {
         Movie movie = getMovie(title);
         if (movie != null && !checkedOutMovies.contains(movie)) {
             checkedOutMovies.add(movie);
-            return true;
+            return RETURN_SUCCESS;
         } else
-            return false;
+            return RETURN_FAILURE;
     }
 
     public boolean login(User user) {

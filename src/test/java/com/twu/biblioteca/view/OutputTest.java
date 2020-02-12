@@ -65,26 +65,4 @@ class OutputTest {
 
         verify(mockPrintStream).println(expectedMessage);
     }
-
-    @Test
-    void shouldDisplayASuccessMessageForCheckoutMovie() {
-        PrintStream mockPrintStream = mock(PrintStream.class);
-        Output output = new Output(mockPrintStream);
-        String expectedMessage = "Thank you! Enjoy the movie";
-
-        output.showCheckoutMovie(true);
-
-        verify(mockPrintStream).println(expectedMessage);
-    }
-
-    @Test
-    void shouldDisplayAFailureMessageForCheckoutMovie() {
-        PrintStream mockPrintStream = mock(PrintStream.class);
-        Output output = new Output(mockPrintStream);
-        String expectedMessage = "Sorry, that movie is not available";
-
-        output.showCheckoutMovie(false);
-
-        verify(mockPrintStream).println(expectedMessage);
-    }
 }

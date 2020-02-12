@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.twu.biblioteca.model.NotificationMessages.RETURN_FAILURE;
+import static com.twu.biblioteca.model.NotificationMessages.RETURN_SUCCESS;
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -131,12 +133,12 @@ class LibraryTest {
 
     @Test
     void shouldTestIfTheUserIsNotifiedOnSuccessfulCheckoutOfAMovie() {
-        assertTrue(library.checkoutMovies("Seven"));
+        assertEquals(library.checkoutMovies("Seven"), RETURN_SUCCESS);
     }
 
     @Test
     void shouldTestIfTheUserIsNotifiedWhenTheRequestedMovieIsNotAvailable() {
-        assertFalse(library.checkoutMovies("Harry Potter"));
+        assertEquals(library.checkoutMovies("Harry Potter"), RETURN_FAILURE);
     }
 
     @Test

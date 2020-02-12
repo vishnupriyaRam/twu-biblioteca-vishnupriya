@@ -32,11 +32,4 @@ public class Output {
         else
             out.println(RETURN_FAILURE.getMessage());
     }
-
-    public void showCheckoutMovie(boolean status) {
-        if (status)
-            out.println(CHECKOUT_SUCCESS_MOVIE.getMessage());
-        else
-            out.println(CHECKOUT_FAILURE_MOVIE.getMessage());
-    }
 }
