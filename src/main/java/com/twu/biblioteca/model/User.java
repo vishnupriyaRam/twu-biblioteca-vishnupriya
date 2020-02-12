@@ -1,5 +1,6 @@
 package com.twu.biblioteca.model;
 
+import java.util.Map;
 import java.util.Objects;
 
 public class User {
@@ -20,6 +21,10 @@ public class User {
 
     public String getLibraryNumber() {
         return libraryNumber;
+    }
+
+    boolean isEquals(User user) {
+        return libraryNumber.equals(user.libraryNumber);
     }
 
     @Override
