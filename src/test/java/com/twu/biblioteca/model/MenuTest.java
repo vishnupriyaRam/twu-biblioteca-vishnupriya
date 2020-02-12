@@ -2,7 +2,6 @@ package com.twu.biblioteca.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.configuration.IMockitoConfiguration;
 
 import java.util.ArrayList;
 import java.util.List;
