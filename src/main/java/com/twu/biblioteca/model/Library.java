@@ -13,6 +13,7 @@ public class Library {
     private List<User> users;
     private boolean isLoggedIn;
     private User currentUser;
+    private LoginListener loginListener;
 
     public Library(List<Book> booksAvailable, List<Movie> moviesAvailable, List<User> users) {
         this.booksAvailable = booksAvailable;
@@ -57,11 +58,11 @@ public class Library {
             throw new UserNotLoggedInException();
     }
 
-    public String viewCheckedOutBooks(){
+    public String viewCheckedOutBooks() {
         StringJoiner list = new StringJoiner("\n");
 
         for (Map.Entry<Book, User> entry : checkedOut.entrySet()) {
-            if(entry.getValue().getLibraryNumber().equals(currentUser.getLibraryNumber()))
+            if (entry.getValue().getLibraryNumber().equals(currentUser.getLibraryNumber()))
                 list.add(entry.getKey().getDetails());
         }
         return list.toString();
@@ -91,6 +92,7 @@ public class Library {
         if (users.contains(user)) {
             isLoggedIn = true;
             currentUser = user;
+            if (loginListener != null) loginListener.loginEvent(user);
             return true;
         }
         isLoggedIn = false;
@@ -101,6 +103,10 @@ public class Library {
     public String getAccountable(String title) {
         Book book = getBook(title);
         return checkedOut.get(book).getLibraryNumber();
+    }
+
+    public void setLoginListener(LoginListener loginListener) {
+        this.loginListener = loginListener;
     }
 
     private Book getBook(String title) { // TODO - its private, so its still okay....

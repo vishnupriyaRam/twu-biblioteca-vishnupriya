@@ -40,7 +40,8 @@ class BibliotecaAppTest {
         users.add(new User("123-4567", "password0"));
         users.add(new User("123-4568", "password1"));
         users.add(new User("123-4569", "password2"));
-        bibliotecaApp = new BibliotecaApp(new Library(books, movies, users), new Menu());
+        Library library = new Library(books, movies, users);
+        bibliotecaApp = new BibliotecaApp(library, new Menu(library));
     }
 
     @AfterEach

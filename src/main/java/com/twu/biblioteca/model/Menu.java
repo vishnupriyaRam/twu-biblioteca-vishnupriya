@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
 
-public class Menu {
+public class Menu implements LoginListener{
     List<MenuItem> menuItems;
+    Library library;
 
-    public Menu() {
+    public Menu(Library library) {
+        this.library = library;
         menuItems = new ArrayList<>();
         createMenu();
+        library.setLoginListener(this);
     }
 
     public String getMenu() {
@@ -24,9 +27,14 @@ public class Menu {
         menuItems.add(MenuItem.LIST_BOOKS);
         menuItems.add(MenuItem.LIST_MOVIES);
         menuItems.add(MenuItem.CHECKOUT_BOOK);
-        menuItems.add(MenuItem.VIEW_CHECKED_OUT);
+
         menuItems.add(MenuItem.CHECKOUT_MOVIE);
         menuItems.add(MenuItem.RETURN);
         menuItems.add(MenuItem.QUIT);
+    }
+
+    @Override
+    public void loginEvent(User user) {
+        menuItems.add(3,MenuItem.VIEW_CHECKED_OUT);
     }
 }

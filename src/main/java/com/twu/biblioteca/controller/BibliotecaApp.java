@@ -50,7 +50,8 @@ public class BibliotecaApp {
         users.add(new User("123-4568", "password1"));
         users.add(new User("123-4569", "password2"));
 
-        new BibliotecaApp(new Library(books, movies, users), new Menu()).startApp();
+        Library library = new Library(books, movies, users);
+        new BibliotecaApp(library, new Menu(library)).startApp();
     }
 
     private void parseInput() throws UserNotLoggedInException {
