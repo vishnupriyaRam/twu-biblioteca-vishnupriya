@@ -36,5 +36,6 @@ public class Menu implements LoginListener{
     @Override
     public void loginEvent(User user) {
         menuItems.add(3,MenuItem.VIEW_CHECKED_OUT);
+        menuItems.add(6, MenuItem.VIEW_USER_DETAILS);
     }
 }

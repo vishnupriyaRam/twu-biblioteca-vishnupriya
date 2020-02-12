@@ -57,7 +57,8 @@ class MenuTest {
                 "4. View checked out books\n" +
                 "5. Checkout a movie\n" +
                 "6. Return a book\n" +
-                "7. Quit";
+                "7. View user details\n" +
+                "8. Quit";
 
         library.login(user);
 
