@@ -11,7 +11,6 @@ import java.util.StringJoiner;
 public class Library {
     private List<Book> booksAvailable;
     private List<Movie> moviesAvailable;
-    private List<Book> checkedOutBooks = new ArrayList<>();
     private HashMap<Book, User> checkedOut = new HashMap<>();
     private List<Movie> checkedOutMovies = new ArrayList<>();
     private List<User> users;
@@ -92,6 +91,11 @@ public class Library {
         return false;
     }
 
+    public String getAccountable(String title) {
+        Book book = getBook(title);
+        return checkedOut.get(book).getLibraryNumber();
+    }
+
     private Book getBook(String title) { // TODO - its private, so its still okay....
         for (Book book : booksAvailable) {
             if (book.hasSameName(title))
@@ -106,10 +110,5 @@ public class Library {
                 return movie;
         }
         return null;
-    }
-
-    public String getAccountable(String title) {
-        Book book = getBook(title);
-        return checkedOut.get(book).getLibraryNumber();
     }
 }

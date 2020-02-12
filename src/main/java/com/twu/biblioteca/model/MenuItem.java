@@ -5,7 +5,6 @@ import com.twu.biblioteca.view.Input;
 import com.twu.biblioteca.view.Output;
 
 public enum MenuItem implements MenuOperator {
-
     LIST_BOOKS("List available Books") {
         @Override
         public void performOperation(Library library) {
@@ -23,7 +22,13 @@ public enum MenuItem implements MenuOperator {
         public void performOperation(Library library) throws UserNotLoggedInException {
             output.show("Enter book to checkout: ");
             String bookToBeCheckedOut = input.readLine();
-            output.showCheckoutBook(library.checkoutBook(bookToBeCheckedOut));
+            try {
+                output.showCheckoutBook(library.checkoutBook(bookToBeCheckedOut));
+            } catch (UserNotLoggedInException e) {
+                output.show("User not logged in");
+                User user = attemptLogin();
+                library.login(user);
+            }
         }
     },
 
@@ -40,7 +45,13 @@ public enum MenuItem implements MenuOperator {
         public void performOperation(Library library) throws UserNotLoggedInException {
             output.show("Enter book to be returned: ");
             String bookToBeReturned = input.readLine();
-            output.showReturnBook(library.returnBook(bookToBeReturned));
+            try {
+                output.showReturnBook(library.returnBook(bookToBeReturned));
+            } catch (UserNotLoggedInException e) {
+                output.show("User not logged in");
+                User user = attemptLogin();
+                library.login(user);
+            }
         }
     },
     QUIT("Quit") {
@@ -56,6 +67,14 @@ public enum MenuItem implements MenuOperator {
             output.show("Please select a valid option!");
         }
     };
+
+    public User attemptLogin() {
+        output.show("Enter library number: ");
+        input.readLine();
+        output.show("Enter Password");
+        input.readLine();
+        return new User("123-4567", "password0");
+    }
 
     private String menuItem;
     Input input = new Input();
