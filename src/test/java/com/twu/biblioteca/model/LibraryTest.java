@@ -164,4 +164,13 @@ class LibraryTest {
         library.login(user);
         assertTrue(library.checkoutBook("Harry Potter"));
     }
+
+    @Test
+    void shouldTestIfTheUserDetailsAreAddedWhenABookIsCheckedOut(){
+        User user = new User("123-4567", "password0");
+        library.login(user);
+        library.checkoutBook("Harry Potter");
+        String expected = "123-4567";
+        assertEquals(expected, library.getAccountable("Harry Potter"));
+    }
 }

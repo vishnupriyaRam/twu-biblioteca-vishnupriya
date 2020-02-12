@@ -10,9 +10,11 @@ public class Library {
     private List<Book> booksAvailable;
     private List<Movie> moviesAvailable;
     private List<Book> checkedOutBooks = new ArrayList<>();
+    private HashMap<Book, User> checkedOut = new HashMap<>();
     private List<Movie> checkedOutMovies = new ArrayList<>();
     private List<User> users;
     private boolean isLoggedIn;
+    private User currentUser;
 
     public Library(List<Book> booksAvailable, List<Movie> moviesAvailable, List<User> users) {
         this.booksAvailable = booksAvailable;
@@ -36,8 +38,8 @@ public class Library {
     public boolean checkoutBook(String title) {
         if (isLoggedIn) {
             Book book = getBook(title);
-            if (book != null && !checkedOutBooks.contains(book)) {
-                checkedOutBooks.add(book);
+            if (book != null && !checkedOut.containsKey(book)) {
+                checkedOut.put(book, currentUser);
                 return true;
             } else
                 return false;
@@ -77,9 +79,11 @@ public class Library {
     public boolean login(User user) {
         if (users.contains(user)) {
             isLoggedIn = true;
+            currentUser = user;
             return true;
         }
         isLoggedIn = false;
+        currentUser = null;
         return false;
     }
 
@@ -97,5 +101,10 @@ public class Library {
                 return movie;
         }
         return null;
+    }
+
+    public String getAccountable(String title) {
+        Book book = getBook(title);
+        return checkedOut.get(book).getLibraryNumber();
     }
 }
