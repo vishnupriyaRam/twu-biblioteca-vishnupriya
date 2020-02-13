@@ -26,14 +26,11 @@ public class Library {
     }
 
     public String viewBooks() {
-        StringJoiner list = new StringJoiner("\n");
-
-        booksAvailable.forEach(book -> {
-            if (!checkedOut.containsKey(book)) {
-                list.add(book.getDetails());
-            }
-        });
-        return list.toString();
+        return booksAvailable
+                .stream()
+                .filter(book -> !checkedOut.containsKey(book))
+                .map(Book::getDetails)
+                .collect(Collectors.joining("\n"));
     }
 
     public void checkoutBook(String title, Output output) throws UserNotLoggedInException {
