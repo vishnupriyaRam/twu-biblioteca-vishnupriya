@@ -42,7 +42,7 @@ class LibraryTest {
                 "The Fault in our stars | Green John | 2012\n" +
                 "A song of ice and fire | Martin RR George | 1996";
 
-        assertEquals(expected, library.viewBooks());
+        assertEquals(expected, library.getBooks());
     }
 
     @Test
@@ -54,7 +54,7 @@ class LibraryTest {
 
         library.checkoutBook("Harry Potter", mock(Output.class));
 
-        assertEquals(expected, library.viewBooks());
+        assertEquals(expected, library.getBooks());
     }
 
     @Test
@@ -91,7 +91,7 @@ class LibraryTest {
 
         library.returnBook("Harry Potter", output);
 
-        assertEquals(expected, library.viewBooks());
+        assertEquals(expected, library.getBooks());
     }
 
     @Test

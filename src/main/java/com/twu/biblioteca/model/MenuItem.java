@@ -9,7 +9,7 @@ public enum MenuItem implements MenuOperator {
     LIST_BOOKS("List available Books") {
         @Override
         public void performOperation(Library library) {
-            output.show(library.viewBooks());
+            output.show(library.getBooks());
         }
     },
     LIST_MOVIES("List available Movies") {

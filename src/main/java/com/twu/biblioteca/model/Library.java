@@ -25,7 +25,7 @@ public class Library {
         this.users = users;
     }
 
-    public String viewBooks() {
+    public String getBooks() {
         return booksAvailable
                 .stream()
                 .filter(book -> !checkedOut.containsKey(book))
