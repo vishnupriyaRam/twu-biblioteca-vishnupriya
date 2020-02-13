@@ -55,18 +55,18 @@ public enum MenuItem implements MenuOperator {
             output.show("Enter book to be returned: ");
             String bookToBeReturned = input.readLine();
             try {
-                output.showReturnBook(library.returnBook(bookToBeReturned));
+                library.returnBook(bookToBeReturned, output);
             } catch (UserNotLoggedInException e) {
                 output.show("User not logged in");
                 User user = attemptLogin(library);
                 if (user != null) {
                     library.login(user);
-                    output.showReturnBook(library.returnBook(bookToBeReturned));
+                    library.returnBook(bookToBeReturned, output);
                 } else output.show("Invalid credentials");
             }
         }
     },
-    VIEW_USER_DETAILS("View user details"){
+    VIEW_USER_DETAILS("View user details") {
         @Override
         public void performOperation(Library library) {
             output.show(library.getUserDetails());

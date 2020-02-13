@@ -81,6 +81,7 @@ class LibraryTest {
 
     @Test
     void shouldTestIfTheReturnedBookAppearsInTheListOfAvailableBooks() throws UserNotLoggedInException {
+        Output output = mock(Output.class);
         User user = new User("123-4568", "password1", "Harry", "harry@gmail.com", "8989898989");
         library.login(user);
         String expected = "Harry Potter | Rowling JK | 2001\n" +
@@ -88,19 +89,21 @@ class LibraryTest {
                 "A song of ice and fire | Martin RR George | 1996";
         library.checkoutBook("Harry Potter", mock(Output.class));
 
-        library.returnBook("Harry Potter");
+        library.returnBook("Harry Potter", output);
 
         assertEquals(expected, library.viewBooks());
     }
 
     @Test
     void shouldTestIfTheUserIsNotifiedOnSuccessfulReturn() throws UserNotLoggedInException {
+        Output output = mock(Output.class);
         User user = new User("123-4568", "password1", "Harry", "harry@gmail.com", "8989898989");
         library.login(user);
 
-        library.checkoutBook("Harry Potter", mock(Output.class));
+        library.checkoutBook("Harry Potter", output);
+        library.returnBook("Harry Potter", output);
 
-        assertTrue(library.returnBook("Harry Potter"));
+        verify(output).show("Thank you for returning the book");
     }
 
     @Test
@@ -206,7 +209,8 @@ class LibraryTest {
 
     @Test
     void shouldTestIfTheUserCannotReturnABookWithoutLoggingIn() {
-        assertThrows(UserNotLoggedInException.class, () -> library.returnBook("Harry Potter"));
+        Output output = mock(Output.class);
+        assertThrows(UserNotLoggedInException.class, () -> library.returnBook("Harry Potter", output));
     }
 
     @Test

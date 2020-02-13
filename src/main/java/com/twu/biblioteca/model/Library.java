@@ -51,16 +51,16 @@ public class Library {
         }
     }
 
-    public boolean returnBook(String title) throws UserNotLoggedInException {
-        if (isLoggedIn) {
-            Book book = getBook(title);
-            if (checkedOut.containsKey(book)) {
-                checkedOut.remove(book);
-                return true;
-            } else
-                return false;
-        } else
+    public void returnBook(String title, Output output) throws UserNotLoggedInException {
+        if (!isLoggedIn)
             throw new UserNotLoggedInException();
+
+        Book book = getBook(title);
+        if (checkedOut.containsKey(book)) {
+            checkedOut.remove(book);
+            output.show(RETURN_SUCCESS.getMessage());
+        } else
+            output.show(RETURN_FAILURE.getMessage());
     }
 
     public String viewCheckedOutBooks() {

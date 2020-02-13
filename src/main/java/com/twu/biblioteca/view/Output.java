@@ -17,11 +17,4 @@ public class Output {
     public void show(String message) {
         out.println(message);
     }
-
-    public void showReturnBook(boolean status) {
-        if (status)
-            out.println(RETURN_SUCCESS.getMessage());
-        else
-            out.println(RETURN_FAILURE.getMessage());
-    }
 }
