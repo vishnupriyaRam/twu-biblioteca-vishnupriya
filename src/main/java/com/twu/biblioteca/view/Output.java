@@ -18,14 +18,6 @@ public class Output {
         out.println(message);
     }
 
-    public void showCheckoutBook(boolean status) {
-        if (status)
-            out.println(CHECKOUT_SUCCESS.getMessage());
-        else
-            out.println(CHECKOUT_FAILURE.getMessage());
-
-    }
-
     public void showReturnBook(boolean status) {
         if (status)
             out.println(RETURN_SUCCESS.getMessage());

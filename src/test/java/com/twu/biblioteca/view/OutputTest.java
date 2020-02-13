@@ -23,28 +23,6 @@ class OutputTest {
     }
 
     @Test
-    void shouldDisplayASuccessMessageForCheckOutBook() {
-        PrintStream mockPrintStream = mock(PrintStream.class);
-        Output output = new Output(mockPrintStream);
-        String expectedMessage = "Thank you! Enjoy the book";
-
-        output.showCheckoutBook(true);
-
-        verify(mockPrintStream).println(expectedMessage);
-    }
-
-    @Test
-    void shouldDisplayAFailureMessageForCheckOutBook() {
-        PrintStream mockPrintStream = mock(PrintStream.class);
-        Output output = new Output(mockPrintStream);
-        String expectedMessage = "Sorry, that book is not available";
-
-        output.showCheckoutBook(false);
-
-        verify(mockPrintStream).println(expectedMessage);
-    }
-
-    @Test
     void shouldDisplayASuccessMessageForReturnedBook() {
         PrintStream mockPrintStream = mock(PrintStream.class);
         Output output = new Output(mockPrintStream);

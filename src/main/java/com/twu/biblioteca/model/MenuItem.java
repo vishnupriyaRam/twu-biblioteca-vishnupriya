@@ -24,13 +24,13 @@ public enum MenuItem implements MenuOperator {
             output.show("Enter book to checkout: ");
             String bookToBeCheckedOut = input.readLine();
             try {
-                output.showCheckoutBook(library.checkoutBook(bookToBeCheckedOut));
+                library.checkoutBook(bookToBeCheckedOut, output);
             } catch (UserNotLoggedInException e) {
                 output.show("User not logged in");
                 User user = attemptLogin(library);
                 if (user != null) {
                     library.login(user);
-                    output.showCheckoutBook(library.checkoutBook(bookToBeCheckedOut));
+                    library.checkoutBook(bookToBeCheckedOut, output);
                 } else output.show("Invalid credentials");
             }
         }
