@@ -137,7 +137,7 @@ class LibraryTest {
                 "Seven | 1995 | David Fincher | 8.6\n" +
                 "The Shawshank Redemption | 1994 | Frank Darabont | 9.3";
 
-        assertEquals(expected, library.viewMovies());
+        assertEquals(expected, library.getMovies());
     }
 
     @Test
@@ -147,7 +147,7 @@ class LibraryTest {
 
         library.checkoutMovies("Seven", mock(Output.class));
 
-        assertEquals(expected, library.viewMovies());
+        assertEquals(expected, library.getMovies());
     }
 
     @Test

@@ -50,13 +50,10 @@ public class Library {
     }
 
     public String viewCheckedOutBooks() {
-        StringJoiner list = new StringJoiner("\n");
-
-        for (Map.Entry<Book, User> entry : checkedOut.entrySet()) {
-            if (currentUser.isEquals(entry.getValue()))
-                list.add(entry.getKey().getDetails());
-        }
-        return list.toString();
+        return checkedOut.entrySet()
+                .stream().filter(bookUserEntry -> bookUserEntry.getValue().isEquals(currentUser))
+                .map(bookUserEntry -> bookUserEntry.getKey().getDetails())
+                .collect(Collectors.joining("\n"));
     }
 
     public void returnBook(String title, Output output) throws UserNotLoggedInException {
@@ -71,7 +68,7 @@ public class Library {
             output.show(RETURN_FAILURE.getMessage());
     }
 
-    public String viewMovies() {
+    public String getMovies() {
         return moviesAvailable
                 .stream()
                 .filter(movie -> !checkedOutMovies.contains(movie))
