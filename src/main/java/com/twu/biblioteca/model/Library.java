@@ -86,7 +86,7 @@ public class Library {
         if (users.contains(user)) {
             isLoggedIn = true;
             currentUser = user;
-            if (loginListener != null) loginListener.loginEvent(user);
+            if (loginListener != null) loginListener.loginEvent();
             return true;
         }
         isLoggedIn = false;

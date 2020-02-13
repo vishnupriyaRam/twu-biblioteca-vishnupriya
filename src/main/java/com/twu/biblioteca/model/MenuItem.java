@@ -79,7 +79,7 @@ public enum MenuItem implements MenuOperator {
             System.exit(0);
         }
     },
-    INVALID("\n") {
+    INVALID("") {
         @Override
         public void performOperation(Library library) {
             output.show("Please select a valid option!");
