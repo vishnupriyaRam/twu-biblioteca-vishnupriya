@@ -5,10 +5,10 @@ import com.twu.biblioteca.exceptions.UserNotLoggedInException;
 import com.twu.biblioteca.view.Output;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static com.twu.biblioteca.model.NotificationMessages.*;
 
-//TODO: class structure
 public class Library {
     private List<Book> booksAvailable;
     private List<Movie> moviesAvailable;
@@ -36,8 +36,6 @@ public class Library {
         return list.toString();
     }
 
-    // TODO - what are different ways to not break CSQ here?
-    // TODO - is this a valid usecase to break CQS? - Think about it.
     public void checkoutBook(String title, Output output) throws UserNotLoggedInException {
         if (!isLoggedIn)
             throw new UserNotLoggedInException();
@@ -49,6 +47,16 @@ public class Library {
         } else {
             output.show(CHECKOUT_FAILURE.getMessage());
         }
+    }
+
+    public String viewCheckedOutBooks() {
+        StringJoiner list = new StringJoiner("\n");
+
+        for (Map.Entry<Book, User> entry : checkedOut.entrySet()) {
+            if (currentUser.isEquals(entry.getValue()))
+                list.add(entry.getKey().getDetails());
+        }
+        return list.toString();
     }
 
     public void returnBook(String title, Output output) throws UserNotLoggedInException {
@@ -63,25 +71,12 @@ public class Library {
             output.show(RETURN_FAILURE.getMessage());
     }
 
-    public String viewCheckedOutBooks() {
-        StringJoiner list = new StringJoiner("\n");
-
-        for (Map.Entry<Book, User> entry : checkedOut.entrySet()) {
-            if (currentUser.isEquals(entry.getValue()))
-                list.add(entry.getKey().getDetails());
-        }
-        return list.toString();
-    }
-
     public String viewMovies() {
-        StringJoiner list = new StringJoiner("\n");
-
-        moviesAvailable.forEach(movie -> {
-                    if (!checkedOutMovies.contains(movie))
-                        list.add(movie.getDetails());
-                }
-        );
-        return list.toString();
+        return moviesAvailable
+                .stream()
+                .filter(movie -> !checkedOutMovies.contains(movie))
+                .map(Movie::getDetails)
+                .collect(Collectors.joining("\n"));
     }
 
     public void checkoutMovies(String title, Output output) {
@@ -125,7 +120,6 @@ public class Library {
     public String getUserDetails() {
         return currentUser.getDetails();
     }
-
 
     private Book getBook(String title) { // TODO - its private, so its still okay....
         for (Book book : booksAvailable) {
