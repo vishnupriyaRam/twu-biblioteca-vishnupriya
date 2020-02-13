@@ -76,7 +76,7 @@ public class Library {
                 .collect(Collectors.joining("\n"));
     }
 
-    public void checkoutMovies(String title, Output output) {
+    public void checkoutMovie(String title, Output output) {
         Movie movie = getMovie(title);
         if (movie != null && !checkedOutMovies.contains(movie)) {
             checkedOutMovies.add(movie);

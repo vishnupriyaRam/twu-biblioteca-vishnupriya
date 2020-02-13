@@ -145,7 +145,7 @@ class LibraryTest {
         String expected = "Forrest Gump | 1994 | Robert Zemeckis | 8.8\n" +
                 "The Shawshank Redemption | 1994 | Frank Darabont | 9.3";
 
-        library.checkoutMovies("Seven", mock(Output.class));
+        library.checkoutMovie("Seven", mock(Output.class));
 
         assertEquals(expected, library.getMovies());
     }
@@ -154,7 +154,7 @@ class LibraryTest {
     void shouldTestIfTheUserIsNotifiedOnSuccessfulCheckoutOfAMovie() {
         Output output = mock(Output.class);
 
-        library.checkoutMovies("Seven", output);
+        library.checkoutMovie("Seven", output);
 
         verify(output).show("Thank you! Enjoy the movie");
     }
@@ -163,7 +163,7 @@ class LibraryTest {
     void shouldTestIfTheUserIsNotifiedWhenTheRequestedMovieIsNotAvailable() {
         Output output = mock(Output.class);
 
-        library.checkoutMovies("test", output);
+        library.checkoutMovie("test", output);
 
         verify(output).show("Sorry, that movie is not available");
     }
