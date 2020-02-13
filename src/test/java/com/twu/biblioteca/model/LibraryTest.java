@@ -225,7 +225,7 @@ class LibraryTest {
         library.checkoutBook("Harry Potter", mock(Output.class));
         String expected = "Harry Potter | Rowling JK | 2001";
 
-        assertEquals(expected, library.viewCheckedOutBooks());
+        assertEquals(expected, library.getCheckedOutBooks());
     }
 
     @Test
@@ -238,7 +238,7 @@ class LibraryTest {
         library.checkoutBook("A song of ice and fire", mock(Output.class));
         String expected = "A song of ice and fire | Martin RR George | 1996";
 
-        assertEquals(expected, library.viewCheckedOutBooks());
+        assertEquals(expected, library.getCheckedOutBooks());
     }
 
     @Test

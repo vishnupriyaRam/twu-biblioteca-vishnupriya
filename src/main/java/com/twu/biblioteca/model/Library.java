@@ -49,7 +49,7 @@ public class Library {
         }
     }
 
-    public String viewCheckedOutBooks() {
+    public String getCheckedOutBooks() {
         return checkedOut.entrySet()
                 .stream().filter(bookUserEntry -> bookUserEntry.getValue().isEquals(currentUser))
                 .map(bookUserEntry -> bookUserEntry.getKey().getDetails())
